@@ -10,5 +10,6 @@ namespace roundbeargames_tutorial
         public List<GeneralBodyPart> generalBodyParts = new List<GeneralBodyPart>();
         public RuntimeAnimatorController animator;
         public bool isFacingAttacker;
+        public bool launchIntoAir;
     }
 }

@@ -67,11 +67,13 @@ namespace roundbeargames_tutorial
 
         private void TakeDamage(AttackInfo info)
         {
+            CameraManager.instance.ShakeCamera(0.35f);
+
             Debug.Log(info.attacker.gameObject.name + " hits：" + this.gameObject.name);
             Debug.Log(this.gameObject.name + " hit " + damagedPart.ToString());
 
 			//control.skinedMeshAnimator.runtimeAnimatorController = info.attackAbility.GetDeathAnimator();
-			control.skinedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.instance.GetAnimator(damagedPart);
+			control.skinedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.instance.GetAnimator(damagedPart, info);
 			info.currentHits++;
 
             control.GetComponent<BoxCollider>().enabled = false;

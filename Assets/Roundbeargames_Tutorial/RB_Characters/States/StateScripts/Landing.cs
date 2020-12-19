@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace roundbeargames_tutorial
 {
-    [CreateAssetMenu(fileName = "New State(Landing)", menuName = "Roundbeargames/AbilityData/Landing")]
+    [CreateAssetMenu(fileName = "Landing", menuName = "Roundbeargames/AbilityData/Landing")]
     public class Landing : StateData
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)

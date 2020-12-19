@@ -4,17 +4,18 @@ using UnityEngine;
 
 namespace roundbeargames_tutorial
 {
-    [CreateAssetMenu(fileName = "New State(Attack)", menuName = "Roundbeargames/AbilityData/Attack")]
+    [CreateAssetMenu(fileName = "Attack", menuName = "Roundbeargames/AbilityData/Attack")]
     public class Attack : StateData
     {
+        public bool debug;
         public float startAttackTime;
         public float endAttackTime;
         public List<string> colliderNames = new List<string>();
+        public bool launchIntoAir;
         public bool mustCollider;
         public bool mustFaceAttacker;
         public float lethalRange;
         public int maxHits;
-        //public List<RuntimeAnimatorController> deathAnimators = new List<RuntimeAnimatorController>();
 
         private List<AttackInfo> finishedAttacks = new List<AttackInfo>();
 
@@ -37,6 +38,7 @@ namespace roundbeargames_tutorial
         {
             RegisterAttack(characterState, animator, stateInfo);
             DeregisterAttack(characterState, animator, stateInfo);
+            CheckCombo(characterState, animator, stateInfo);
         }
 
         public void RegisterAttack(CharacterState state, Animator animator, AnimatorStateInfo stateInfo)
@@ -50,6 +52,10 @@ namespace roundbeargames_tutorial
 
                     if (!info.isRegisterd && info.attackAbility == this)
                     {
+                        if (debug)
+                        {
+                            Debug.Log(this.name + " registed " + stateInfo.normalizedTime);
+                        }
                         info.Register(this);
                     }
                 }
@@ -71,6 +77,27 @@ namespace roundbeargames_tutorial
                     {
                         info.isFinished = true;
                         info.GetComponent<PoolObject>().TurnOff();
+
+                        if (debug)
+                        {
+                            Debug.Log(this.name + " registed " + stateInfo.normalizedTime);
+                        }
+                    }
+                }
+            }
+        }
+
+        public void CheckCombo(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
+        {
+            if (stateInfo.normalizedTime >= startAttackTime + (endAttackTime - startAttackTime) / 3)
+            {
+                if (stateInfo.normalizedTime < endAttackTime + (endAttackTime - startAttackTime) / 2)
+                {
+                    CharacterControl control = characterState.GetCharacterControl(animator);
+                    if (control.attack)
+                    {
+                        Debug.Log("uppercut triggered");
+                        animator.SetBool(TransitionParameter.Attack.ToString(), true);
                     }
                 }
             }
@@ -87,7 +114,8 @@ namespace roundbeargames_tutorial
 
             foreach(AttackInfo info in AttackManager.instance.currentAttcks)
             {
-                finishedAttacks.Add(info);
+                if (info == null || info.attackAbility == this)
+                    finishedAttacks.Add(info);
             }
 
             foreach (AttackInfo info in finishedAttacks)
@@ -96,11 +124,5 @@ namespace roundbeargames_tutorial
                     AttackManager.instance.currentAttcks.Remove(info);
             }
         }
-
-        //public RuntimeAnimatorController GetDeathAnimator()
-        //{
-        //    int index = Random.Range(0, deathAnimators.Count);
-        //    return deathAnimators[index];
-        //}
     }
 }

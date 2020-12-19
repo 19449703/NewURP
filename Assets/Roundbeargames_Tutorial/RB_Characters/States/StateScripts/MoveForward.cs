@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace roundbeargames_tutorial
 {
-    [CreateAssetMenu(fileName = "New State(MoveForward)", menuName = "Roundbeargames/AbilityData/MoveForward")]
+    [CreateAssetMenu(fileName = "MoveForward", menuName = "Roundbeargames/AbilityData/MoveForward")]
     public class MoveForward : StateData
     {
         public AnimationCurve speedGraph;

@@ -18,7 +18,7 @@ namespace roundbeargames_tutorial
 			}
 		}
 
-        public RuntimeAnimatorController GetAnimator(GeneralBodyPart generalBodyPart)
+        public RuntimeAnimatorController GetAnimator(GeneralBodyPart generalBodyPart, AttackInfo info)
         {
             SetupDeathAnimationLoader();
 
@@ -28,10 +28,20 @@ namespace roundbeargames_tutorial
             {
                 foreach (GeneralBodyPart part in data.generalBodyParts)
                 {
-                    if (part == generalBodyPart)
+                    if (info.launchIntoAir)
                     {
-                        candidates.Add(data.animator);
-                        break;
+                        if (data.launchIntoAir)
+                        {
+                            candidates.Add(data.animator);
+                        }
+                    }
+                    else
+                    {
+                        if (part == generalBodyPart)
+                        {
+                            candidates.Add(data.animator);
+                            break;
+                        }
                     }
                 }
             }
