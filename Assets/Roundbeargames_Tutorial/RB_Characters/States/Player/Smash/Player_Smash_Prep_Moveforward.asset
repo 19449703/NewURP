@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 673a5a4233eba4f198d6a46b3dffa06e, type: 3}
-  m_Name: Player_Walk_MoveForward
+  m_Name: Player_Smash_Prep_Moveforward
   m_EditorClassIdentifier: 
   speedGraph:
     serializedVersion: 2
@@ -18,23 +18,33 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.20027448
+      outSlope: -0.20027448
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6723457
+      value: 0.8653463
+      inSlope: -0.6576552
+      outSlope: -0.6576552
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      value: 0.5
+      inSlope: -1.1150359
+      outSlope: -1.1150359
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  speed: 1.8
+  speed: 5
   blockDistance: 0.1
+  constant: 1

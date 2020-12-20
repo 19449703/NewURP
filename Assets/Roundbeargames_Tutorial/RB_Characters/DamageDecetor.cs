@@ -43,6 +43,14 @@ namespace roundbeargames_tutorial
                         TakeDamage(info);
                     }
                 }
+                else
+                {
+                    float dist = Vector3.SqrMagnitude(this.gameObject.transform.position - info.attacker.transform.position);
+                    if (dist <= info.lethalRange)
+                    {
+                        TakeDamage(info);
+                    }
+                }
             }
         }
 
@@ -67,7 +75,8 @@ namespace roundbeargames_tutorial
 
         private void TakeDamage(AttackInfo info)
         {
-            CameraManager.instance.ShakeCamera(0.35f);
+            if (info.mustCollider)
+                CameraManager.instance.ShakeCamera(0.35f);
 
             Debug.Log(info.attacker.gameObject.name + " hits：" + this.gameObject.name);
             Debug.Log(this.gameObject.name + " hit " + damagedPart.ToString());
