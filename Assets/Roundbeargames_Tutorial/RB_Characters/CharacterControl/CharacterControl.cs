@@ -13,8 +13,15 @@ namespace roundbeargames_tutorial
         Attack,
 	}
 
+    public enum RBScenes
+    {
+        TutorialScene_CharacterSelect,
+        TutorialScene_Sample,
+    }
+
 	public class CharacterControl : MonoBehaviour
     {
+        public PlayableCharacterType playableCharacterType;
         public Animator skinedMeshAnimator;
 
         public bool moveLeft;
@@ -39,7 +46,6 @@ namespace roundbeargames_tutorial
         public List<GameObject> bottomSpheres = new List<GameObject>();
         public List<GameObject> frontSpheres = new List<GameObject>();
         public List<Collider> ragdollParts = new List<Collider>();
-        //public List<Collider> collidingParts = new List<Collider>();
 
         private List<TriggerDetector> triggerDetectors = new List<TriggerDetector>();
 
@@ -56,12 +62,22 @@ namespace roundbeargames_tutorial
             }
 
             FaceForward(true);
-            //SetRiagdollParts();
             SetColliderSpheres();
+            
 
             if (switchBack)
             {
                 FaceForward(false);
+            }
+
+            RegisterCharacter();
+        }
+
+        private void RegisterCharacter()
+        {
+            if (!CharacterManager.instance.characters.Contains(this))
+            {
+                CharacterManager.instance.characters.Add(this);
             }
         }
 
@@ -187,12 +203,27 @@ namespace roundbeargames_tutorial
 
         public void FaceForward(bool forward)
         {
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name.Equals(RBScenes.TutorialScene_CharacterSelect.ToString()))
+            {
+                return;
+            }
+
             this.transform.rotation = Quaternion.Euler(0, forward ? 0 : 180, 0);
         }
 
         public bool IsFaceingForward()
         {
             return this.transform.forward.z > 0;
+        } 
+
+        public Collider GetBodyPart(string name)
+        {
+            foreach (Collider c in ragdollParts)
+            {
+                if (c.name.Contains(name))
+                    return c;
+            }
+            return null;
         }
 
 #if UNITY_EDITOR
