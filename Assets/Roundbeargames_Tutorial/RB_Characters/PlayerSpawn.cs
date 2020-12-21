@@ -32,6 +32,7 @@ namespace roundbeargames_tutorial
 
             GameObject obj = Instantiate(Resources.Load(objName, typeof(GameObject))) as GameObject;
             obj.transform.position = this.transform.position;
+            obj.gameObject.GetComponent<ManualInput>().enabled = true;
             GetComponent<MeshRenderer>().enabled = false;
 
             Cinemachine.CinemachineVirtualCamera[] cams = GameObject.FindObjectsOfType<Cinemachine.CinemachineVirtualCamera>();

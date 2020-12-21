@@ -2086,7 +2086,6 @@ MonoBehaviour:
   - {fileID: 2715566404104151283}
   gravityMultiplier: 0
   pullMultiplier: 0
-  material: {fileID: 0}
 --- !u!54 &2329919842405227639
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2110,7 +2109,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4990578942421880225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb007abb46d9a4720903b5a41d520416, type: 3}
   m_Name: 

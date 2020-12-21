@@ -11,6 +11,7 @@ namespace roundbeargames_tutorial
         ForceTransition,
         Grounded,
         Attack,
+        ClickAnimation,
 	}
 
     public enum RBScenes
@@ -24,10 +25,10 @@ namespace roundbeargames_tutorial
         public PlayableCharacterType playableCharacterType;
         public Animator skinedMeshAnimator;
 
-        public bool moveLeft;
-        public bool moveRight;
-        public bool jump;
-        public bool attack;
+        public bool moveLeft = false;
+        public bool moveRight = false;
+        public bool jump = false;
+        public bool attack = false;
 
         private Rigidbody rigid;
         public Rigidbody RIGID_BODY
@@ -225,26 +226,5 @@ namespace roundbeargames_tutorial
             }
             return null;
         }
-
-#if UNITY_EDITOR
-        public Material material;
-        public void ChangeMaterial()
-		{
-            if (material == null)
-			{
-				Debug.LogError("No material specified");
-				return;
-			}
-
-			Renderer[] arrMaterials = this.gameObject.GetComponentsInChildren<Renderer>();
-            foreach (Renderer r in arrMaterials)
-			{
-                if (r.gameObject != this.gameObject)
-				{
-					r.material = material;
-				}
-			}
-		}
-#endif
     }
 }
