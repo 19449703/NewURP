@@ -24,7 +24,10 @@ namespace roundbeargames_tutorial
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            
+            // 在TeleportOnLedge里实现
+            //CharacterControl control = characterState.GetCharacterControl(animator);
+            //GameObject anim = control.skinedMeshAnimator.gameObject;
+            //anim.transform.SetParent(control.transform);
         }
     }
 }
