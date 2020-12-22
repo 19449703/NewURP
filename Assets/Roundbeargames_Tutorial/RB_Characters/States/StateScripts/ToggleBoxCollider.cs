@@ -13,16 +13,16 @@ namespace roundbeargames_tutorial
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-
+            if (onStart)
+            {
+                CharacterControl control = characterState.GetCharacterControl(animator);
+                ToggleBoxCol(control);
+            }
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (onStart)
-            {
-                CharacterControl control = characterState.GetCharacterControl(animator);
-                ToggleCol(control);
-            }
+            
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -30,11 +30,11 @@ namespace roundbeargames_tutorial
             if (onEnd)
             {
                 CharacterControl control = characterState.GetCharacterControl(animator);
-                ToggleCol(control);
+                ToggleBoxCol(control);
             }
         }
 
-        private void ToggleCol(CharacterControl control)
+        private void ToggleBoxCol(CharacterControl control)
         {
             control.GetComponent<BoxCollider>().enabled = false;
         }

@@ -13,6 +13,8 @@ namespace roundbeargames_tutorial
             GameObject anim = control.skinedMeshAnimator.gameObject;
             anim.transform.SetParent(control.ledgeChecker.grabbedLedge.transform);
             anim.transform.localPosition = control.ledgeChecker.grabbedLedge.offset;
+            anim.transform.SetParent(control.transform, true);
+            anim.transform.SetAsFirstSibling();
 
             control.RIGID_BODY.velocity = Vector3.zero;
         }
@@ -24,10 +26,6 @@ namespace roundbeargames_tutorial
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            // 在TeleportOnLedge里实现
-            //CharacterControl control = characterState.GetCharacterControl(animator);
-            //GameObject anim = control.skinedMeshAnimator.gameObject;
-            //anim.transform.SetParent(control.transform);
         }
     }
 }

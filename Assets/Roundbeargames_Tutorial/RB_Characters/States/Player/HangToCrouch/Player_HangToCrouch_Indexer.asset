@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player_HangToCrouch_Indexer
   m_EditorClassIdentifier: 
   index: 1
-  transitionConditions: 0000000005000000
+  transitionConditions: 05000000

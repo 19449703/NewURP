@@ -13,16 +13,16 @@ namespace roundbeargames_tutorial
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            
-        }
-
-        public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
-        {
             if (onStart)
             {
                 CharacterControl control = characterState.GetCharacterControl(animator);
                 ToggleGrav(control);
             }
+        }
+
+        public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
+        {
+            
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
