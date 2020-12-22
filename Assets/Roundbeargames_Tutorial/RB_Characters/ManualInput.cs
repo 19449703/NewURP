@@ -16,6 +16,8 @@ namespace roundbeargames_tutorial
         // Update is called once per frame
         void Update()
         {
+            control.moveUp = VirtualInputManager.instance.moveUp;
+            control.moveDown = VirtualInputManager.instance.moveDown;
             control.moveRight = VirtualInputManager.instance.moveRight;
             control.moveLeft = VirtualInputManager.instance.moveLeft;
             control.jump = VirtualInputManager.instance.jump;

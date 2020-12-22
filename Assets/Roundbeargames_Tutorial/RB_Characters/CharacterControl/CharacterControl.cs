@@ -12,6 +12,8 @@ namespace roundbeargames_tutorial
         Grounded,
         Attack,
         ClickAnimation,
+        TransitionIndex,
+
 	}
 
     public enum RBScenes
@@ -25,10 +27,13 @@ namespace roundbeargames_tutorial
         public PlayableCharacterType playableCharacterType;
         public Animator skinedMeshAnimator;
 
+        public bool moveUp = false;
+        public bool moveDown = false;
         public bool moveLeft = false;
         public bool moveRight = false;
         public bool jump = false;
         public bool attack = false;
+        public LedgeChecker ledgeChecker;
 
         private Rigidbody rigid;
         public Rigidbody RIGID_BODY
@@ -70,6 +75,8 @@ namespace roundbeargames_tutorial
             {
                 FaceForward(false);
             }
+
+            ledgeChecker = GetComponentInChildren<LedgeChecker>();
 
             RegisterCharacter();
         }
