@@ -36,7 +36,7 @@ namespace roundbeargames_tutorial
 
         private void ToggleBoxCol(CharacterControl control)
         {
-            control.GetComponent<BoxCollider>().enabled = false;
+            control.GetComponent<BoxCollider>().enabled = on;
         }
     }
 }

@@ -41,8 +41,14 @@ namespace roundbeargames_tutorial
                 foreach (var o in control.bottomSpheres)
                 {
                     Debug.DrawRay(o.transform.position, -Vector3.up * 0.7f, Color.yellow);
-                    if (Physics.Raycast(o.transform.position, -Vector3.up, distance))
-                        return true;
+                    RaycastHit hit;
+                    if (Physics.Raycast(o.transform.position, -Vector3.up, out hit, distance))
+                    {
+                        if (!control.ragdollParts.Contains(hit.collider) && !Ledge.IsLedge(hit.collider.gameObject))
+                        {
+                            return true;
+                        }
+                    }
                 }
             }
             
