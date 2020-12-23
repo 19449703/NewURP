@@ -36,6 +36,15 @@ namespace roundbeargames_tutorial
                     continue;
                 }
 
+                if (info.mustFaceAttacker)
+                {
+                    Vector3 vec = this.transform.position - info.attacker.transform.position;
+                    if (vec.z * info.attacker.transform.forward.z < 0)
+                    {
+                        continue;
+                    }
+                }
+
                 if (info.mustCollider)
                 {
                     if (IsCollided(info))
