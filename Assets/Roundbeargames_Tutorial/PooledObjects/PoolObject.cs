@@ -23,6 +23,10 @@ namespace roundbeargames_tutorial
 
         public void TurnOff()
         {
+            this.transform.parent = null;
+            this.transform.position = Vector3.zero;
+            this.transform.rotation = Quaternion.identity;
+
             PoolManager.instance.AddObject(this);
             gameObject.SetActive(false);
         }

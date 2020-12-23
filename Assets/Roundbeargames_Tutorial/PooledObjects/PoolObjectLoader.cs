@@ -7,7 +7,8 @@ namespace roundbeargames_tutorial
     public enum PoolObjectType
     {
         ATTACKINFO,
-        HAMMER,
+        HAMMER_OBJ,
+        HAMMER_VFX,
     }
 
     public class PoolObjectLoader : MonoBehaviour
@@ -15,21 +16,28 @@ namespace roundbeargames_tutorial
         public static PoolObject InstantiatePrefab(PoolObjectType objType)
         {
             GameObject obj = null;
+            GameObject prefab = null;
 
             switch (objType)
             {
                 case PoolObjectType.ATTACKINFO:
                     {
-                        obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject)) as GameObject);
+                        prefab = Resources.Load("AttackInfo", typeof(GameObject)) as GameObject;
                         break;
                     }
-                case PoolObjectType.HAMMER:
+                case PoolObjectType.HAMMER_OBJ:
                     {
-                        obj = Instantiate(Resources.Load("ThorHammer", typeof(GameObject)) as GameObject);
+                        prefab = Resources.Load("ThorHammer", typeof(GameObject)) as GameObject;
+                        break;
+                    }
+                case PoolObjectType.HAMMER_VFX:
+                    {
+                        prefab = Resources.Load("VFX_HammerDown", typeof(GameObject)) as GameObject;
                         break;
                     }
             }
 
+            obj = Instantiate(prefab);
             return obj.GetComponent<PoolObject>();
         }
     }

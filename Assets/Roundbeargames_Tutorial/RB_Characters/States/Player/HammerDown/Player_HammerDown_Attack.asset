@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Player_HammerDown_Attack
   m_EditorClassIdentifier: 
   debug: 0
-  startAttackTime: 0
-  endAttackTime: 0
+  startAttackTime: 0.3
+  endAttackTime: 0.4
   colliderNames: []
   launchIntoAir: 0
   mustCollider: 0
-  mustFaceAttacker: 0
-  lethalRange: 0
-  maxHits: 0
+  mustFaceAttacker: 1
+  lethalRange: 5
+  maxHits: 100

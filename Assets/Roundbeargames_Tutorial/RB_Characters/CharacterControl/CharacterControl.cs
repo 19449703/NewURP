@@ -54,6 +54,7 @@ namespace roundbeargames_tutorial
         public List<Collider> ragdollParts = new List<Collider>();
 
         private List<TriggerDetector> triggerDetectors = new List<TriggerDetector>();
+        private Dictionary<string, GameObject> childObjects = new Dictionary<string, GameObject>();
 
         public float gravityMultiplier;
         public float pullMultiplier;
@@ -231,6 +232,26 @@ namespace roundbeargames_tutorial
                 if (c.name.Contains(name))
                     return c;
             }
+            return null;
+        }
+
+        public GameObject GetChildObj(string name)
+        {
+            if (childObjects.ContainsKey(name))
+            {
+                return childObjects[name];
+            }
+
+            Transform[] arr = this.gameObject.GetComponentsInChildren<Transform>();
+            foreach(var t in arr)
+            {
+                if (t.gameObject.name.Equals(name))
+                {
+                    childObjects.Add(name, t.gameObject);
+                    return t.gameObject;
+                }
+            }
+
             return null;
         }
     }
