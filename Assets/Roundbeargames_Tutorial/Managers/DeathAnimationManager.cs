@@ -26,32 +26,25 @@ namespace roundbeargames_tutorial
 
             foreach (var data in deathAnimationLoader.deathAnimationDataList)
             {
-                if (info.launchIntoAir)
+                if (data.deathType == info.deathType)
                 {
-                    if (data.launchIntoAir)
+                    if (info.deathType != DeathType.NONE)
                     {
                         candidates.Add(data.animator);
                     }
-                }
-                else if (!info.mustCollider)
-                {
-                    foreach (GeneralBodyPart part in data.generalBodyParts)
+                    else if (!info.mustCollider)
                     {
-                        if (part == GeneralBodyPart.Lower || part == GeneralBodyPart.Leg)
-                        {
-                            candidates.Add(data.animator);
-                            break;
-                        }
+                        candidates.Add(data.animator);
                     }
-                }
-                else
-                {
-                    foreach (GeneralBodyPart part in data.generalBodyParts)
+                    else
                     {
-                        if (part == generalBodyPart)
+                        foreach (GeneralBodyPart part in data.generalBodyParts)
                         {
-                            candidates.Add(data.animator);
-                            break;
+                            if (part == generalBodyPart)
+                            {
+                                candidates.Add(data.animator);
+                                break;
+                            }
                         }
                     }
                 }

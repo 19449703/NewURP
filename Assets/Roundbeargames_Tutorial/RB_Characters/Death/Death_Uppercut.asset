@@ -10,8 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 57a9f4d6492984253beee6d6482f56f0, type: 3}
-  m_Name: FallingBackDeath
+  m_Name: Death_Uppercut
   m_EditorClassIdentifier: 
-  generalBodyParts: 0000000002000000
-  animator: {fileID: 9100000, guid: 90143c61720985d498b93e1d36c2df4d, type: 2}
-  isFacingAttacker: 1
+  generalBodyParts: 
+  animator: {fileID: 9100000, guid: 7348b6fe2bb3151428498d9fb0177bb3, type: 2}
+  isFacingAttacker: 0
+  deathType: 1

@@ -4,12 +4,19 @@ using UnityEngine;
 
 namespace roundbeargames_tutorial
 {
+    public enum DeathType
+    {
+        NONE,
+        LAUNCH_INTO_AIR,
+        GROUND_SHOCK,
+    }
+
     [CreateAssetMenu(fileName = "New DeathAnimationData", menuName = "Roundbeargames/Death/DeathAnimationData")]
     public class DeathAnimationData : ScriptableObject
     {
         public List<GeneralBodyPart> generalBodyParts = new List<GeneralBodyPart>();
         public RuntimeAnimatorController animator;
         public bool isFacingAttacker;
-        public bool launchIntoAir;
+        public DeathType deathType;
     }
 }

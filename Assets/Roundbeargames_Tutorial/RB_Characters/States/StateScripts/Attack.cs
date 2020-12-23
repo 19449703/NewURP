@@ -11,7 +11,7 @@ namespace roundbeargames_tutorial
         public float startAttackTime;
         public float endAttackTime;
         public List<string> colliderNames = new List<string>();
-        public bool launchIntoAir;
+        public DeathType deathType;
         public bool mustCollider;
         public bool mustFaceAttacker;
         public float lethalRange;

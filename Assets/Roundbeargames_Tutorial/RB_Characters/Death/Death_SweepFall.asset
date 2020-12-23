@@ -9,15 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93bf091f0b56048b69abd4bd771535a8, type: 3}
-  m_Name: Player_HammerDown_Attack
+  m_Script: {fileID: 11500000, guid: 57a9f4d6492984253beee6d6482f56f0, type: 3}
+  m_Name: Death_SweepFall
   m_EditorClassIdentifier: 
-  debug: 0
-  startAttackTime: 0.3
-  endAttackTime: 0.4
-  colliderNames: []
+  generalBodyParts: 
+  animator: {fileID: 9100000, guid: dbec60e1312a197489f7fe54dbcd49d1, type: 2}
+  isFacingAttacker: 0
   deathType: 2
-  mustCollider: 0
-  mustFaceAttacker: 1
-  lethalRange: 5
-  maxHits: 100
