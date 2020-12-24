@@ -9552,7 +9552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   poolObjectType: 2
-  scheduledOffTime: 0
+  scheduledOffTime: 0.35
 --- !u!1 &2170643027890962384
 GameObject:
   m_ObjectHideFlags: 0

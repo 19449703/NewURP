@@ -11,6 +11,7 @@ namespace roundbeargames_tutorial
 		{
             animator.SetBool(TransitionParameter.Jump.ToString(), false);
             animator.SetBool(TransitionParameter.Attack.ToString(), false);
+            animator.SetBool(TransitionParameter.Move.ToString(), false);
         }
 
 		public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -27,7 +28,11 @@ namespace roundbeargames_tutorial
                 animator.SetBool(TransitionParameter.Jump.ToString(), true);
             }
 
-			if (control.moveLeft)
+            if (control.moveLeft && control.moveRight)
+            {
+                // do nothing
+            }
+            else if (control.moveLeft)
             {
                 animator.SetBool(TransitionParameter.Move.ToString(), true);
             }

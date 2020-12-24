@@ -8,6 +8,7 @@ namespace roundbeargames_tutorial
     {
         CharacterControl control;
         GeneralBodyPart damagedPart;
+        int damageTaken = 0;
 
         private void Awake()
         {
@@ -71,10 +72,13 @@ namespace roundbeargames_tutorial
                 {
                     foreach (string name in info.colliderNames)
                     {
-                        if (name == collider.gameObject.name)
+                        if (name.Equals(collider.gameObject.name))
                         {
-                            damagedPart = trigger.generalBodyPart;
-                            return true;
+                            if (collider.transform.root.gameObject == info.attacker.gameObject)
+                            {
+                                damagedPart = trigger.generalBodyPart;
+                                return true;
+                            }
                         }
                     }
                 }
@@ -84,18 +88,23 @@ namespace roundbeargames_tutorial
 
         private void TakeDamage(AttackInfo info)
         {
+            if (damageTaken > 0)
+                return;
+
             if (info.mustCollider)
                 CameraManager.instance.ShakeCamera(0.35f);
 
             Debug.Log(info.attacker.gameObject.name + " hits：" + this.gameObject.name);
             Debug.Log(this.gameObject.name + " hit " + damagedPart.ToString());
 
-			//control.skinedMeshAnimator.runtimeAnimatorController = info.attackAbility.GetDeathAnimator();
 			control.skinedMeshAnimator.runtimeAnimatorController = DeathAnimationManager.instance.GetAnimator(damagedPart, info);
 			info.currentHits++;
 
             control.GetComponent<BoxCollider>().enabled = false;
+			control.ledgeChecker.GetComponent<BoxCollider>().enabled = false;
             control.RIGID_BODY.useGravity = false;
+
+            damageTaken++;
         }
     }
 }

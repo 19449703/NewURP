@@ -34,6 +34,7 @@ namespace roundbeargames_tutorial
         public bool jump = false;
         public bool attack = false;
         public LedgeChecker ledgeChecker;
+        public AnimationProgress animationProgress;
 
         private Rigidbody rigid;
         public Rigidbody RIGID_BODY
@@ -78,6 +79,7 @@ namespace roundbeargames_tutorial
             }
 
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
+            animationProgress = GetComponent<AnimationProgress>();
 
             RegisterCharacter();
         }

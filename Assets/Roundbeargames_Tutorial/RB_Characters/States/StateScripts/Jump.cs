@@ -10,9 +10,7 @@ namespace roundbeargames_tutorial
         [Range(0f, 1f)]
         public float jumpTiming;
         public float jumpForce;
-        //public AnimationCurve gravity;
         public AnimationCurve pull;
-        private bool isJumped;
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -21,7 +19,7 @@ namespace roundbeargames_tutorial
             if (jumpTiming == 0f)
             {
                 control.RIGID_BODY.AddForce(Vector3.up * jumpForce);
-                isJumped = true;
+                control.animationProgress.jumped = true;
             }
 
             animator.SetBool(TransitionParameter.Grounded.ToString(), false);
@@ -31,13 +29,12 @@ namespace roundbeargames_tutorial
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            //control.gravityMultiplier = gravity.Evaluate(stateInfo.normalizedTime);
             control.pullMultiplier = pull.Evaluate(stateInfo.normalizedTime);
 
-            if (!isJumped && stateInfo.normalizedTime >= jumpTiming)
+            if (!control.animationProgress.jumped && stateInfo.normalizedTime >= jumpTiming)
             {
                 control.RIGID_BODY.AddForce(Vector3.up * jumpForce);
-                isJumped = true;
+                control.animationProgress.jumped = true;
             }
         }
 
@@ -45,7 +42,7 @@ namespace roundbeargames_tutorial
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
             control.pullMultiplier = 0;
-            isJumped = false;
+            control.animationProgress.jumped = false;
         }
     }
 }
