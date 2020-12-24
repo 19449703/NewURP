@@ -20,12 +20,12 @@ namespace roundbeargames_tutorial
                     }
                 case PlayableCharacterType.RED:
                     {
-                        objName = "yBot - red";
+                        objName = "yBot - red Variant";
                         break;
                     }
                 case PlayableCharacterType.GREEN:
                     {
-                        objName = "yBot - green";
+                        objName = "yBot - green Variant";
                         break;
                     }
             }

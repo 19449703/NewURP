@@ -6,6 +6,7 @@ namespace roundbeargames_tutorial
 {
     public class VirtualInputManager : Singleton<VirtualInputManager>
     {
+        public bool turbo = false;
         public bool moveUp = false;
         public bool moveDown = false;
         public bool moveLeft = false;

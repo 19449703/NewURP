@@ -13,7 +13,7 @@ namespace roundbeargames_tutorial
         Attack,
         ClickAnimation,
         TransitionIndex,
-
+        Turbo,
 	}
 
     public enum RBScenes
@@ -27,6 +27,7 @@ namespace roundbeargames_tutorial
         public PlayableCharacterType playableCharacterType;
         public Animator skinedMeshAnimator;
 
+        public bool turbo = false;
         public bool moveUp = false;
         public bool moveDown = false;
         public bool moveLeft = false;

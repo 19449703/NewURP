@@ -8,6 +8,7 @@ namespace roundbeargames_tutorial
     {
         void Update()
         {
+            VirtualInputManager.instance.turbo = Input.GetKey(KeyCode.RightShift);
             VirtualInputManager.instance.moveUp = Input.GetKey(KeyCode.W);
             VirtualInputManager.instance.moveDown = Input.GetKey(KeyCode.S);
             VirtualInputManager.instance.moveLeft = Input.GetKey(KeyCode.A);
