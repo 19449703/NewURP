@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace roundbeargames_tutorial
 {
-    [CreateAssetMenu(fileName = "CheckTurbo", menuName = "Roundbeargames/AbilityData/CheckTurbo")]
-    public class CheckTurbo : StateData
+    [CreateAssetMenu(fileName = "CheckTurboAndMovement", menuName = "Roundbeargames/AbilityData/CheckTurboAndMovement")]
+    public class CheckTurboAndMovement : StateData
     {
-        public bool museRequireMovement;
-
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
 
@@ -18,26 +16,14 @@ namespace roundbeargames_tutorial
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            if (control.turbo)
+            if ((control.moveLeft || control.moveRight) && control.turbo)
             {
-                if (museRequireMovement)
-                {
-                    if (control.moveLeft || control.moveRight)
-                    {
-                        animator.SetBool(TransitionParameter.Turbo.ToString(), true);
-                    }
-                    else
-                    {
-                        animator.SetBool(TransitionParameter.Turbo.ToString(), false);
-                    }
-                }
-                else
-                {
-                    animator.SetBool(TransitionParameter.Turbo.ToString(), true);
-                }
+                animator.SetBool(TransitionParameter.Move.ToString(), true);
+                animator.SetBool(TransitionParameter.Turbo.ToString(), true);
             }
             else
             {
+                animator.SetBool(TransitionParameter.Move.ToString(), false);
                 animator.SetBool(TransitionParameter.Turbo.ToString(), false);
             }
         }

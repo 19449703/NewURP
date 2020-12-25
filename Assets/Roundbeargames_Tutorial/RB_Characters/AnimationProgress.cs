@@ -12,6 +12,7 @@ namespace roundbeargames_tutorial
         //public bool attackTriggered;
         //public float maxPressTime;
         //private float pressTime;
+        public bool disallowEarlyTurn;
 
         private CharacterControl control;
 

@@ -7,6 +7,8 @@ namespace roundbeargames_tutorial
     [CreateAssetMenu(fileName = "MoveForward", menuName = "Roundbeargames/AbilityData/MoveForward")]
     public class MoveForward : StateData
     {
+        public bool allowEarlyTurn;
+        public bool lockDirection;
         public AnimationCurve speedGraph;
         public float speed;
         public float blockDistance;
@@ -14,6 +16,21 @@ namespace roundbeargames_tutorial
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
+            CharacterControl control = characterState.GetCharacterControl(animator);
+
+            if (allowEarlyTurn && !control.animationProgress.disallowEarlyTurn)
+            {
+                if (control.moveLeft)
+                {
+                    control.FaceForward(false);
+                }
+                else
+                {
+                    control.FaceForward(true);
+                }
+            }
+
+            control.animationProgress.disallowEarlyTurn = false;
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -61,10 +78,10 @@ namespace roundbeargames_tutorial
                 return;
             }
 
+            CheckTurn(control);
+
             if (control.moveLeft)
             {
-                control.transform.rotation = Quaternion.Euler(0, 180, 0);
-
                 if (!CheckFront(control))
                 {
                     control.MoveForward(speed, speedGraph.Evaluate(stateInfo.normalizedTime));
@@ -72,11 +89,24 @@ namespace roundbeargames_tutorial
             }
             if (control.moveRight)
             {
-                control.transform.rotation = Quaternion.Euler(0, 0, 0);
-
                 if (!CheckFront(control))
                 {
                     control.MoveForward(speed, speedGraph.Evaluate(stateInfo.normalizedTime));
+                }
+            }
+        }
+
+        void CheckTurn(CharacterControl control)
+        {
+            if (!lockDirection)
+            {
+                if (control.moveLeft)
+                {
+                    control.transform.rotation = Quaternion.Euler(0, 180, 0);
+                }
+                if (control.moveRight)
+                {
+                    control.transform.rotation = Quaternion.Euler(0, 0, 0);
                 }
             }
         }
