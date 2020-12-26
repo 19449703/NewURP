@@ -29,5 +29,18 @@ namespace roundbeargames_tutorial
 
             return null;
         }
+
+        public CharacterControl GetPlayableCharacter()
+        {
+            foreach (var ch in characters)
+            {
+                ManualInput manualInput = ch.GetComponent<ManualInput>();
+
+                if (manualInput != null && manualInput.enabled)
+                    return ch;
+            }
+
+            return null;
+        }
     }
 }
