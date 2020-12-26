@@ -8,7 +8,7 @@ namespace roundbeargames_tutorial
     {
         CharacterControl control;
         GeneralBodyPart damagedPart;
-        int damageTaken = 0;
+        public int damageTaken = 0;
 
         private void Awake()
         {

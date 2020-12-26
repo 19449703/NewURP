@@ -38,6 +38,7 @@ namespace roundbeargames_tutorial
         public LedgeChecker ledgeChecker;
         public AnimationProgress animationProgress;
         public AIProgress aiProgress;
+        public DamageDecetor damageDetector;
 
         private Rigidbody rigid;
         public Rigidbody RIGID_BODY
@@ -84,6 +85,7 @@ namespace roundbeargames_tutorial
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
             animationProgress = GetComponent<AnimationProgress>();
             aiProgress = GetComponentInChildren<AIProgress>();
+            damageDetector = GetComponentInChildren<DamageDecetor>();
 
             RegisterCharacter();
         }
