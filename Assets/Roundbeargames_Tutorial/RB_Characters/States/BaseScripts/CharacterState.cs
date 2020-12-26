@@ -43,7 +43,8 @@ namespace roundbeargames_tutorial
         {
             if (control == null)
             {
-                control = animator.GetComponentInParent<CharacterControl>();
+                control = animator.transform.root.GetComponent<CharacterControl>();
+                //control = animator.GetComponentInParent<CharacterControl>();
             }
             return control;
         }
