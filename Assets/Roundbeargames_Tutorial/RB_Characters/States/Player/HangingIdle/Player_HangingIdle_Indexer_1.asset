@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player_HangingIdle_Indexer_1
   m_EditorClassIdentifier: 
   index: 1
-  transitionConditions: 05000000
+  transitionConditions: 0000000005000000

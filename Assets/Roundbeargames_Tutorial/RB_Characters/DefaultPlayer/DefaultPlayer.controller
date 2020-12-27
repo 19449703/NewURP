@@ -322,9 +322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listAbilityData:
-  - {fileID: 11400000, guid: 4513b5f6307004507ab0d4a366861857, type: 2}
-  - {fileID: 11400000, guid: 0dae53a77a3904dc6adf7f8b7c749643, type: 2}
-  - {fileID: 11400000, guid: af7ea70a874f549cb9fe840862c116c8, type: 2}
+  - {fileID: 11400000, guid: 23e145d4f47ff6e4e948bfad0bb6c356, type: 2}
+  - {fileID: 11400000, guid: 749a84cbe9e92954ab9578661b32880b, type: 2}
 --- !u!1101 &-6362724964257984516
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -831,8 +830,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: HammerDown
-  m_Speed: 1.2
+  m_Name: CorssPuch
+  m_Speed: 2.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8928786109981599233}
@@ -846,7 +845,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 7f90ab05a40304a0bb4845513216e697,
+  m_Motion: {fileID: -203655887218126122, guid: 9e09139258ad4f044b0379baa29462ee,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
