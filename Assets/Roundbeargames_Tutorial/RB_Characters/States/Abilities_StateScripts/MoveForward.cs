@@ -24,7 +24,7 @@ namespace roundbeargames_tutorial
                 {
                     control.FaceForward(false);
                 }
-                else
+                else if (control.moveRight)
                 {
                     control.FaceForward(true);
                 }

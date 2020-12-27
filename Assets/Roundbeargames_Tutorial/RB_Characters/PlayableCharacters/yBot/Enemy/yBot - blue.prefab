@@ -112,6 +112,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: f6a819b92fbdd4696b053be0f9993385, type: 2}
+    - target: {fileID: 2329919842405227638, guid: b0a1f14773640434bb7725e7adc1837e,
+        type: 3}
+      propertyPath: leftHand_Attack
+      value: 
+      objectReference: {fileID: 8589942596669327371}
+    - target: {fileID: 2329919842405227638, guid: b0a1f14773640434bb7725e7adc1837e,
+        type: 3}
+      propertyPath: rightHand_Attack
+      value: 
+      objectReference: {fileID: 7853005837134228678}
     - target: {fileID: 2715566404104151281, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
@@ -253,6 +263,18 @@ PrefabInstance:
 --- !u!4 &3575606108401054156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6977431129256982085, guid: b0a1f14773640434bb7725e7adc1837e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5857998302509483913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8589942596669327371 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2773743673963417474, guid: b0a1f14773640434bb7725e7adc1837e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5857998302509483913}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7853005837134228678 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4445247827599108943, guid: b0a1f14773640434bb7725e7adc1837e,
     type: 3}
   m_PrefabInstance: {fileID: 5857998302509483913}
   m_PrefabAsset: {fileID: 0}

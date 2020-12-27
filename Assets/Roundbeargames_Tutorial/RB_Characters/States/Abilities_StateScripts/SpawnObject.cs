@@ -54,6 +54,8 @@ namespace roundbeargames_tutorial
 
             GameObject obj = PoolManager.instance.GetObject(objectType);
 
+            Debug.Log("spawning " + objectType.ToString() + " | looking for: " + parentObjectName);
+
             if (!string.IsNullOrEmpty(parentObjectName))
             {
                 GameObject p = control.GetChildObj(parentObjectName);

@@ -1299,7 +1299,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1cdb8689f633d46d8805df0ef586e7c6, type: 2}
   - {fileID: 11400000, guid: 4cea6f3a0ffec4082a62baa5dc2a174b, type: 2}
   - {fileID: 11400000, guid: b4e950a02ef054d85ab1708b7ac4b286, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 323191a4be7af4d3188abe3771e8c1a0, type: 2}
   - {fileID: 11400000, guid: 1bce6c3bec0154027ae179da5554aafa, type: 2}
 --- !u!1101 &1124837715158351338
 AnimatorStateTransition:

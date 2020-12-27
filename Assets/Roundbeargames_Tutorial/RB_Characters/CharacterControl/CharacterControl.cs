@@ -25,9 +25,7 @@ namespace roundbeargames_tutorial
 
 	public class CharacterControl : MonoBehaviour
     {
-        public PlayableCharacterType playableCharacterType;
-        public Animator skinedMeshAnimator;
-
+        [Header("Input")]
         public bool turbo = false;
         public bool moveUp = false;
         public bool moveDown = false;
@@ -35,10 +33,28 @@ namespace roundbeargames_tutorial
         public bool moveRight = false;
         public bool jump = false;
         public bool attack = false;
+
+        [Header("SubComponents")]
         public LedgeChecker ledgeChecker;
         public AnimationProgress animationProgress;
         public AIProgress aiProgress;
         public DamageDecetor damageDetector;
+        public List<GameObject> bottomSpheres = new List<GameObject>();
+        public List<GameObject> frontSpheres = new List<GameObject>();
+
+        [Header("Gravity")]
+        public float gravityMultiplier;
+        public float pullMultiplier;
+
+        [Header("Setup")]
+        public PlayableCharacterType playableCharacterType;
+        public Animator skinedMeshAnimator;
+        public List<Collider> ragdollParts = new List<Collider>();
+        public GameObject leftHand_Attack;
+        public GameObject rightHand_Attack;
+
+        private List<TriggerDetector> triggerDetectors = new List<TriggerDetector>();
+        private Dictionary<string, GameObject> childObjects = new Dictionary<string, GameObject>();
 
         private Rigidbody rigid;
         public Rigidbody RIGID_BODY
@@ -52,17 +68,6 @@ namespace roundbeargames_tutorial
                 return rigid;
             }
         }
-
-        public GameObject colliderEdgePrefab;
-        public List<GameObject> bottomSpheres = new List<GameObject>();
-        public List<GameObject> frontSpheres = new List<GameObject>();
-        public List<Collider> ragdollParts = new List<Collider>();
-
-        private List<TriggerDetector> triggerDetectors = new List<TriggerDetector>();
-        private Dictionary<string, GameObject> childObjects = new Dictionary<string, GameObject>();
-
-        public float gravityMultiplier;
-        public float pullMultiplier;
 
         private void Awake()
         {
@@ -212,7 +217,7 @@ namespace roundbeargames_tutorial
 
         public GameObject CreateEdgeSphere(Vector3 pos)
         {
-            GameObject obj = Instantiate(colliderEdgePrefab, pos, Quaternion.identity);
+            GameObject obj = Instantiate(Resources.Load<GameObject>("ColliderEdge"), pos, Quaternion.identity);
             return obj;
         }
 

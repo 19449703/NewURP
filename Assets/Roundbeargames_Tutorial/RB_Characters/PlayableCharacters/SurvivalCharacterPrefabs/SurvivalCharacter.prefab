@@ -2639,8 +2639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a20d2ea990e274e399b14e8a2288ccf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableCharacterType: 1
-  skinedMeshAnimator: {fileID: 3872151636348247707}
   turbo: 0
   moveUp: 0
   moveDown: 0
@@ -2656,6 +2654,10 @@ MonoBehaviour:
     type: 3}
   bottomSpheres: []
   frontSpheres: []
+  gravityMultiplier: 0
+  pullMultiplier: 0
+  playableCharacterType: 1
+  skinedMeshAnimator: {fileID: 3872151636348247707}
   ragdollParts:
   - {fileID: 7279529091106240646}
   - {fileID: 6654485678678452634}
@@ -2670,8 +2672,8 @@ MonoBehaviour:
   - {fileID: 3550308913008211172}
   - {fileID: 9072394546383748708}
   - {fileID: 6396919067379867319}
-  gravityMultiplier: 0
-  pullMultiplier: 0
+  leftHand_Attack: {fileID: 3872151636338896213}
+  rightHand_Attack: {fileID: 3872151636338896177}
 --- !u!54 &3559972450676363365
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2695,7 +2697,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6084363985024876979}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb007abb46d9a4720903b5a41d520416, type: 3}
   m_Name: 

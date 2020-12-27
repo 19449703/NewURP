@@ -70,11 +70,19 @@ namespace roundbeargames_tutorial
             {
                 foreach (Collider collider in trigger.collidingParts)
                 {
-                    foreach (string name in info.colliderNames)
+                    foreach (AttackPartType part in info.attackParts)
                     {
-                        if (name.Equals(collider.gameObject.name))
+                        if (part == AttackPartType.LEFT_HAND)
                         {
-                            if (collider.transform.root.gameObject == info.attacker.gameObject)
+                            if (collider.gameObject == info.attacker.leftHand_Attack)
+                            {
+                                damagedPart = trigger.generalBodyPart;
+                                return true;
+                            }
+                        }
+                        else if (part == AttackPartType.RIGHT_HAND)
+                        {
+                            if (collider.gameObject == info.attacker.rightHand_Attack)
                             {
                                 damagedPart = trigger.generalBodyPart;
                                 return true;

@@ -15,11 +15,7 @@ MonoBehaviour:
   debug: 0
   startAttackTime: 0.15
   endAttackTime: 0.52
-  colliderNames:
-  - LeftHand
-  - mixamorig:LeftHand
-  - basic_rig:LeftHand
-  - Bip001 L Hand
+  attackParts: 00000000
   deathType: 0
   mustCollider: 1
   mustFaceAttacker: 0
