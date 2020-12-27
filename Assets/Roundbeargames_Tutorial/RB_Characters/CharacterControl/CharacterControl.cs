@@ -130,11 +130,14 @@ namespace roundbeargames_tutorial
             {
                 if (c.gameObject != this.gameObject)
                 {
-                    c.isTrigger = true;
-                    ragdollParts.Add(c);
+                    if (c.gameObject.GetComponent<LedgeChecker>() == null)
+                    {
+                        c.isTrigger = true;
+                        ragdollParts.Add(c);
 
-                    if (c.GetComponent<TriggerDetector>() == null)
-                        c.gameObject.AddComponent<TriggerDetector>();
+                        if (c.GetComponent<TriggerDetector>() == null)
+                            c.gameObject.AddComponent<TriggerDetector>();
+                    }
                 }
             }
         }

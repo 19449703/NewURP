@@ -37,8 +37,8 @@ namespace Roundbeargames
 
                 Physics.IgnoreLayerCollision(dic["Default"], dic["Default"], false);
                 Physics.IgnoreLayerCollision(dic[RB_Layers.CHARACTER.ToString()], dic["Default"], false);
-                Physics.IgnoreLayerCollision(dic[RB_Layers.DEADBODY.ToString()], dic["Default"], false);
-                Physics.IgnoreLayerCollision(dic[RB_Layers.DEADBODY.ToString()], dic[RB_Layers.DEADBODY.ToString()], false);
+                //Physics.IgnoreLayerCollision(dic[RB_Layers.DEADBODY.ToString()], dic["Default"], false);
+                //Physics.IgnoreLayerCollision(dic[RB_Layers.DEADBODY.ToString()], dic[RB_Layers.DEADBODY.ToString()], false);
 
                 Debug.Log("default collisions set");
             }

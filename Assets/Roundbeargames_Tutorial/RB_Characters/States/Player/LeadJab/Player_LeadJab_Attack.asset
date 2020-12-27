@@ -18,7 +18,9 @@ MonoBehaviour:
   colliderNames:
   - LeftHand
   - mixamorig:LeftHand
-  launchIntoAir: 0
+  - basic_rig:LeftHand
+  - Bip001 L Hand
+  deathType: 0
   mustCollider: 1
   mustFaceAttacker: 0
   lethalRange: 0
