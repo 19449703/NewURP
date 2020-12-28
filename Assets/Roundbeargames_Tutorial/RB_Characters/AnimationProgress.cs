@@ -9,10 +9,12 @@ namespace roundbeargames_tutorial
         public bool jumped;
         public bool cameraShaken;
         public List<PoolObjectType> poolObjectList = new List<PoolObjectType>();
+		public bool ragdollTriggered;
         //public bool attackTriggered;
         //public float maxPressTime;
         //private float pressTime;
         public bool disallowEarlyTurn;
+        public float airMomentum;
 
         private CharacterControl control;
 

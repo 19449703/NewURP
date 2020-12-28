@@ -41,6 +41,7 @@ namespace roundbeargames_tutorial
         public DamageDecetor damageDetector;
         public List<GameObject> bottomSpheres = new List<GameObject>();
         public List<GameObject> frontSpheres = new List<GameObject>();
+        public AIController aiController;
 
         [Header("Gravity")]
         public float gravityMultiplier;
@@ -91,6 +92,7 @@ namespace roundbeargames_tutorial
             animationProgress = GetComponent<AnimationProgress>();
             aiProgress = GetComponentInChildren<AIProgress>();
             damageDetector = GetComponentInChildren<DamageDecetor>();
+            aiController = GetComponentInChildren<AIController>();
 
             RegisterCharacter();
         }
@@ -149,16 +151,37 @@ namespace roundbeargames_tutorial
 
         public void TurnOnRagdoll()
         {
+            // change layers
+            Transform[] arr = GetComponentsInChildren<Transform>();
+            foreach(Transform t in arr)
+            {
+                t.gameObject.layer = LayerMask.NameToLayer(RB_Layers.DEADBODY.ToString());
+            }
+
+            // save bodypart positions
+            foreach (Collider c in ragdollParts)
+            {
+                TriggerDetector det = c.gameObject.GetComponent<TriggerDetector>();
+                det.lastPosition = c.gameObject.transform.localPosition;
+                det.lastRotation = c.gameObject.transform.localRotation;
+            }
+
+            // turn off animator/avatar/etc
             RIGID_BODY.useGravity = false;
             RIGID_BODY.velocity = Vector3.zero;
             this.gameObject.GetComponent<BoxCollider>().enabled = false;
             skinedMeshAnimator.enabled = false;
             skinedMeshAnimator.avatar = null;
 
+            // turn on ragdoll
             foreach (Collider c in ragdollParts)
             {
                 c.isTrigger = false;
                 c.attachedRigidbody.velocity = Vector3.zero;
+
+                TriggerDetector det = c.gameObject.GetComponent<TriggerDetector>();
+                c.gameObject.transform.localPosition = det.lastPosition;
+                c.gameObject.transform.localRotation = det.lastRotation;
             }
         }
 

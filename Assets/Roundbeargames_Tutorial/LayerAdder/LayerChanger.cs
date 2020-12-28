@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Roundbeargames
+namespace roundbeargames_tutorial
 {
     public class LayerChanger : MonoBehaviour
     {

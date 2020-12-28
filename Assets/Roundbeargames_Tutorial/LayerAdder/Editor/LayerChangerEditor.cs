@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-namespace Roundbeargames
+namespace roundbeargames_tutorial
 {
     [CustomEditor(typeof(LayerChanger))]
     public class LayerChangerEditor : Editor

@@ -58,28 +58,28 @@ namespace roundbeargames_tutorial
                         animator.gameObject.SetActive(true);
                     }
                     // 临时攻击方案
-                    else
-                    {
-                        if (CharacterManager.instance.GetPlayableCharacter().damageDetector.damageTaken == 0)
-                        {
-                            if (control.IsFaceingForward())
-                            {
-                                control.moveLeft = false;
-                                control.moveRight = true;
-                                control.attack = true;
-                            }
-                            else
-                            {
-                                control.moveLeft = true;
-                                control.moveRight = false;
-                                control.attack = true;
-                            }
-                        }
-                        else
-                        {
-                            control.attack = false;
-                        }
-                    }
+                    //else
+                    //{
+                    //    if (CharacterManager.instance.GetPlayableCharacter().damageDetector.damageTaken == 0)
+                    //    {
+                    //        if (control.IsFaceingForward())
+                    //        {
+                    //            control.moveLeft = false;
+                    //            control.moveRight = true;
+                    //            control.attack = true;
+                    //        }
+                    //        else
+                    //        {
+                    //            control.moveLeft = true;
+                    //            control.moveRight = false;
+                    //            control.attack = true;
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        control.attack = false;
+                    //    }
+                    //}
                 }
             }
         }
