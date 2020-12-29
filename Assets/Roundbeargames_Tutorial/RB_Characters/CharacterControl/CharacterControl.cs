@@ -161,7 +161,7 @@ namespace roundbeargames_tutorial
             // save bodypart positions
             foreach (Collider c in ragdollParts)
             {
-                TriggerDetector det = c.gameObject.GetComponent<TriggerDetector>();
+                TriggerDetector det = c.GetComponent<TriggerDetector>();
                 det.lastPosition = c.gameObject.transform.localPosition;
                 det.lastRotation = c.gameObject.transform.localRotation;
             }
@@ -179,9 +179,9 @@ namespace roundbeargames_tutorial
                 c.isTrigger = false;
                 c.attachedRigidbody.velocity = Vector3.zero;
 
-                TriggerDetector det = c.gameObject.GetComponent<TriggerDetector>();
-                c.gameObject.transform.localPosition = det.lastPosition;
-                c.gameObject.transform.localRotation = det.lastRotation;
+                TriggerDetector det = c.GetComponent<TriggerDetector>();
+                c.transform.localPosition = det.lastPosition;
+                c.transform.localRotation = det.lastRotation;
             }
         }
 

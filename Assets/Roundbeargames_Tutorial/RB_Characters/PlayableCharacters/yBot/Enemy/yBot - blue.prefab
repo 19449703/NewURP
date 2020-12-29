@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aiList: []
-  initialAI: 0
+  initialAI: 1
 --- !u!1 &2120087724035671158
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7275409249999922170
 Transform:
   m_ObjectHideFlags: 0
@@ -142,7 +142,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &807405352350047695
 Transform:
   m_ObjectHideFlags: 0
@@ -218,28 +218,33 @@ PrefabInstance:
       objectReference: {fileID: 7853005837134228678}
     - target: {fileID: 2715566404104151281, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0000002408318
+      objectReference: {fileID: 0}
+    - target: {fileID: 2715566404104151281, guid: b0a1f14773640434bb7725e7adc1837e,
+        type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.00000021203098
+      value: -0.000000026387594
       objectReference: {fileID: 0}
     - target: {fileID: 3052746998989082610, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.0051703397
+      value: -0.005170578
       objectReference: {fileID: 0}
     - target: {fileID: 3135921509143070686, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.0005538565
+      value: -0.00055361807
       objectReference: {fileID: 0}
     - target: {fileID: 3948933247626156219, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.00000041728703
+      value: 0.000000417287
       objectReference: {fileID: 0}
     - target: {fileID: 3948933247626156219, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.00000017322597
+      value: -0.000000065192616
       objectReference: {fileID: 0}
     - target: {fileID: 4075773033193445194, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
@@ -249,12 +254,12 @@ PrefabInstance:
     - target: {fileID: 4494945602581316670, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.y
-      value: 0.000000264448
+      value: 0.00000026444803
       objectReference: {fileID: 0}
     - target: {fileID: 4494945602581316670, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0.000000109499275
+      value: 0.00000034791785
       objectReference: {fileID: 0}
     - target: {fileID: 4890665111357399226, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
@@ -274,7 +279,7 @@ PrefabInstance:
     - target: {fileID: 6136935970729490812, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.0005538515
+      value: -0.00055361306
       objectReference: {fileID: 0}
     - target: {fileID: 6977431129256982085, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
@@ -289,12 +294,12 @@ PrefabInstance:
     - target: {fileID: 6977431129256982085, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 6977431129256982085, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.6
+      value: 6.51
       objectReference: {fileID: 0}
     - target: {fileID: 6977431129256982085, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
@@ -349,7 +354,7 @@ PrefabInstance:
     - target: {fileID: 9019515343262720504, guid: b0a1f14773640434bb7725e7adc1837e,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: -0.026496656
+      value: -0.026496895
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 439151561, guid: b0a1f14773640434bb7725e7adc1837e, type: 3}

@@ -21,6 +21,7 @@ namespace roundbeargames_tutorial
 
         public Vector3 lastPosition;
         public Quaternion lastRotation;
+
         private void Awake()
         {
             owner = this.GetComponentInParent<CharacterControl>();
