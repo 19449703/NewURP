@@ -142,7 +142,13 @@ namespace roundbeargames_tutorial
                         c.isTrigger = true;
                         ragdollParts.Add(c);
                         c.attachedRigidbody.interpolation = RigidbodyInterpolation.Interpolate;
-                        c.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.Continuous;
+                        c.attachedRigidbody.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+
+                        CharacterJoint joint = c.GetComponent<CharacterJoint>();
+                        if (joint != null)
+                        {
+                            joint.enableProjection = true;
+                        }
 
                         if (c.GetComponent<TriggerDetector>() == null)
                             c.gameObject.AddComponent<TriggerDetector>();

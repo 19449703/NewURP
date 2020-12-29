@@ -9,15 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93bf091f0b56048b69abd4bd771535a8, type: 3}
-  m_Name: Player_Uppercut_Attack
+  m_Script: {fileID: 11500000, guid: 610ed051cc2ea4a72bb2bbe341071699, type: 3}
+  m_Name: Ragdoll_Uppercut
   m_EditorClassIdentifier: 
-  debug: 1
-  startAttackTime: 0.3
-  endAttackTime: 0.6
-  attackParts: 01000000
-  deathType: 1
-  mustCollider: 1
-  mustFaceAttacker: 0
-  lethalRange: 0
-  maxHits: 1
+  triggerTiming: 0.32

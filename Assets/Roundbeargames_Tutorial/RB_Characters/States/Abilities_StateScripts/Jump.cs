@@ -42,7 +42,7 @@ namespace roundbeargames_tutorial
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
             control.pullMultiplier = 0;
-            control.animationProgress.jumped = false;
+            //control.animationProgress.jumped = false;
         }
     }
 }

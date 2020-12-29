@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 610ed051cc2ea4a72bb2bbe341071699, type: 3}
-  m_Name: Trigger_FallingBack
+  m_Name: Ragdoll_FallingBack
   m_EditorClassIdentifier: 
   triggerTiming: 0.275
