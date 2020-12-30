@@ -11,6 +11,9 @@ namespace roundbeargames_tutorial
         public bool onStart;
         public bool onEnd;
 
+        [Space(10)]
+        public bool repositionSpheres;
+
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             if (onStart)
@@ -36,7 +39,13 @@ namespace roundbeargames_tutorial
 
         private void ToggleBoxCol(CharacterControl control)
         {
-            control.GetComponent<BoxCollider>().enabled = on;
+            control.boxCollider.enabled = on;
+
+            if (repositionSpheres)
+            {
+                control.Reposition_FrontSpheres();
+                control.Reposition_BottomSpheres();
+            }
         }
     }
 }

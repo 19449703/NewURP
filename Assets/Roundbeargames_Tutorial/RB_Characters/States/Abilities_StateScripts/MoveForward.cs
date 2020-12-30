@@ -84,7 +84,15 @@ namespace roundbeargames_tutorial
             }
 
             control.animationProgress.airMomentum = Mathf.Clamp(control.animationProgress.airMomentum, -maxMomentum, maxMomentum);
-            control.FaceForward(control.animationProgress.airMomentum > 0);
+            
+            if (control.animationProgress.airMomentum > 0)
+            {
+                control.FaceForward(true);
+            }
+            else if (control.animationProgress.airMomentum < 0)
+            {
+                control.FaceForward(false);
+            }
 
             if (!CheckFront(control))
                 control.MoveForward(speed, Mathf.Abs(control.animationProgress.airMomentum));

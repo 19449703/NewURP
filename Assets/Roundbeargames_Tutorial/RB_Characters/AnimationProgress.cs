@@ -18,6 +18,7 @@ namespace roundbeargames_tutorial
 
         [Header("UpdateBoxCollider")]
         public bool updatingBoxCollider;
+        public bool updatingSpheres;
         public Vector3 targetSize;
         public float sizeSpeed;
         public Vector3 targetCenter;

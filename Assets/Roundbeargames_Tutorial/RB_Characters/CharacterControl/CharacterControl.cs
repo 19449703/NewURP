@@ -73,22 +73,6 @@ namespace roundbeargames_tutorial
 
         private void Awake()
         {
-            bool switchBack = false;
-
-            if (!IsFaceingForward())
-            {
-                switchBack = true;
-            }
-
-            FaceForward(true);
-            SetColliderSpheres();
-            
-
-            if (switchBack)
-            {
-                FaceForward(false);
-            }
-
             ledgeChecker = GetComponentInChildren<LedgeChecker>();
             animationProgress = GetComponent<AnimationProgress>();
             aiProgress = GetComponentInChildren<AIProgress>();
@@ -96,6 +80,7 @@ namespace roundbeargames_tutorial
             aiController = GetComponentInChildren<AIController>();
             boxCollider = GetComponent<BoxCollider>();
 
+            SetColliderSpheres();
             RegisterCharacter();
         }
 
@@ -120,14 +105,6 @@ namespace roundbeargames_tutorial
 
             return triggerDetectors;
         }
-
-        //private IEnumerator Start()
-        //{
-        //    yield return new WaitForSeconds(5f);
-        //    RIGID_BODY.AddForce(300 * Vector3.up);
-        //    yield return new WaitForSeconds(0.5f);
-        //    TurnOnRagdoll();
-        //}
 
         public void SetRiagdollParts()
         {
@@ -197,29 +174,61 @@ namespace roundbeargames_tutorial
 
         private void SetColliderSpheres()
         {
-            BoxCollider box = GetComponent<BoxCollider>();
+            for (int i = 0; i < 5; i++)
+            {
+                GameObject obj = Instantiate(Resources.Load<GameObject>("ColliderEdge"), Vector3.zero, Quaternion.identity);
+                obj.name = "ColliderEdge-Bottom " + (i + 1).ToString();
+                bottomSpheres.Add(obj);
+                obj.transform.SetParent(this.transform);
+            }
 
-            float top = box.bounds.center.y + box.bounds.extents.y;
-            float bottom = box.bounds.center.y - box.bounds.extents.y;
-            float front = box.bounds.center.z + box.bounds.extents.z;
-            float back = box.bounds.center.z - box.bounds.extents.z;
+            Reposition_BottomSpheres();
 
-            GameObject bottomFront = CreateEdgeSphere(new Vector3(0, bottom, front));
-            GameObject bottomBack = CreateEdgeSphere(new Vector3(0, bottom, back));
-            bottomFront.transform.SetParent(this.transform);
-            bottomBack.transform.SetParent(this.transform);
-            bottomSpheres.Add(bottomFront);
-            bottomSpheres.Add(bottomBack);
+            for (int i = 0; i < 10; i++)
+            {
+                GameObject obj = Instantiate(Resources.Load<GameObject>("ColliderEdge"), Vector3.zero, Quaternion.identity);
+                obj.name = "ColliderEdge-Front " + (i + 1).ToString();
+                frontSpheres.Add(obj);
+                obj.transform.SetParent(this.transform);
+            }
 
-            GameObject topFront = CreateEdgeSphere(new Vector3(0, top, front));
-            topFront.transform.SetParent(this.transform);
-            frontSpheres.Add(topFront);
+            Reposition_FrontSpheres();
+        }
 
-            float horSec = Vector3.Distance(bottomFront.transform.localPosition, bottomBack.transform.localPosition) / 5;
-            CreateMiddleSpheres(bottomFront, -this.transform.forward, horSec, 4, bottomSpheres);
+        public void Reposition_FrontSpheres()
+        {
+            float top = boxCollider.bounds.center.y + boxCollider.bounds.extents.y;
+            float bottom = boxCollider.bounds.center.y - boxCollider.bounds.extents.y;
+            float front = boxCollider.bounds.center.z + boxCollider.bounds.extents.z;
+            //float back = boxCollider.bounds.center.z - boxCollider.bounds.extents.z;
 
-            float verSec = Vector3.Distance(bottomFront.transform.localPosition, topFront.transform.localPosition) / 10;
-            CreateMiddleSpheres(bottomFront, this.transform.up, verSec, 9, frontSpheres);
+            frontSpheres[0].transform.localPosition = new Vector3(0, bottom + 0.05f, front) - this.transform.position;
+            frontSpheres[1].transform.localPosition = new Vector3(0, top, front) - this.transform.position;
+
+            float interval = (top - bottom + 0.05f) / 9;
+            
+            for (int i = 2; i < frontSpheres.Count; i++)
+            {
+                frontSpheres[i].transform.localPosition = new Vector3(0, bottom + interval * (i - 1), front) - this.transform.position;
+            }
+        }
+
+        public void Reposition_BottomSpheres()
+        {
+            //float top = boxCollider.bounds.center.y + boxCollider.bounds.extents.y;
+            float bottom = boxCollider.bounds.center.y - boxCollider.bounds.extents.y;
+            float front = boxCollider.bounds.center.z + boxCollider.bounds.extents.z;
+            float back = boxCollider.bounds.center.z - boxCollider.bounds.extents.z;
+
+            bottomSpheres[0].transform.localPosition = new Vector3(0, bottom, back) - this.transform.position;
+            bottomSpheres[1].transform.localPosition = new Vector3(0, bottom, front) - this.transform.position;
+
+            float interval = (front - back) / 4;
+
+            for (int i = 2; i < bottomSpheres.Count; i++)
+            {
+                bottomSpheres[i].transform.localPosition = new Vector3(0, bottom, back + interval * (i - 1)) - this.transform.position;
+            }
         }
 
         public void UpdateBoxCollider_Size()
@@ -231,6 +240,8 @@ namespace roundbeargames_tutorial
             {
                 boxCollider.size = Vector3.Lerp(boxCollider.size, animationProgress.targetSize,
                     animationProgress.sizeSpeed * Time.deltaTime);
+
+                animationProgress.updatingSpheres = true;
             }
         }
 
@@ -243,6 +254,8 @@ namespace roundbeargames_tutorial
             {
                 boxCollider.center = Vector3.Lerp(boxCollider.center, animationProgress.targetCenter,
                     animationProgress.centerSpeed * Time.deltaTime);
+
+                animationProgress.updatingSpheres = true;
             }
         }
 
@@ -260,26 +273,14 @@ namespace roundbeargames_tutorial
                 RIGID_BODY.velocity += -Vector3.up * pullMultiplier;
             }
 
+            animationProgress.updatingSpheres = false;
             UpdateBoxCollider_Size();
             UpdateBoxCollider_Center();
-        }
-
-        public void CreateMiddleSpheres(GameObject start, Vector3 dir, float sec,
-            int iterations, List<GameObject> spheresList)
-        {
-            for (int i = 0; i < iterations; i++)
+            if (animationProgress.updatingSpheres)
             {
-                Vector3 pos = start.transform.position + dir * sec * (i + 1);
-                GameObject obj = CreateEdgeSphere(pos);
-                obj.transform.SetParent(this.transform);
-                spheresList.Add(obj);
+                Reposition_BottomSpheres();
+                Reposition_FrontSpheres();
             }
-        }
-
-        public GameObject CreateEdgeSphere(Vector3 pos)
-        {
-            GameObject obj = Instantiate(Resources.Load<GameObject>("ColliderEdge"), pos, Quaternion.identity);
-            return obj;
         }
 
         public void MoveForward(float speed, float speedGraph)

@@ -14,10 +14,10 @@ namespace roundbeargames_tutorial
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
-
             if (jumpTiming == 0f)
             {
+                CharacterControl control = characterState.GetCharacterControl(animator);
+
                 control.RIGID_BODY.AddForce(Vector3.up * jumpForce);
                 control.animationProgress.jumped = true;
             }
