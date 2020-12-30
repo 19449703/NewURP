@@ -42,6 +42,7 @@ namespace roundbeargames_tutorial
         public List<GameObject> bottomSpheres = new List<GameObject>();
         public List<GameObject> frontSpheres = new List<GameObject>();
         public AIController aiController;
+        public BoxCollider boxCollider;
 
         [Header("Gravity")]
         public float gravityMultiplier;
@@ -93,6 +94,7 @@ namespace roundbeargames_tutorial
             aiProgress = GetComponentInChildren<AIProgress>();
             damageDetector = GetComponentInChildren<DamageDecetor>();
             aiController = GetComponentInChildren<AIController>();
+            boxCollider = GetComponent<BoxCollider>();
 
             RegisterCharacter();
         }
@@ -220,6 +222,30 @@ namespace roundbeargames_tutorial
             CreateMiddleSpheres(bottomFront, this.transform.up, verSec, 9, frontSpheres);
         }
 
+        public void UpdateBoxCollider_Size()
+        {
+            if (!animationProgress.updatingBoxCollider)
+                return;
+
+            if (Vector3.SqrMagnitude(boxCollider.size - animationProgress.targetSize) > 0.01f)
+            {
+                boxCollider.size = Vector3.Lerp(boxCollider.size, animationProgress.targetSize,
+                    animationProgress.sizeSpeed * Time.deltaTime);
+            }
+        }
+
+        public void UpdateBoxCollider_Center()
+        {
+            if (!animationProgress.updatingBoxCollider)
+                return;
+
+            if (Vector3.SqrMagnitude(boxCollider.center - animationProgress.targetCenter) > 0.01f)
+            {
+                boxCollider.center = Vector3.Lerp(boxCollider.center, animationProgress.targetCenter,
+                    animationProgress.centerSpeed * Time.deltaTime);
+            }
+        }
+
         private void FixedUpdate()
         {
             if (RIGID_BODY.velocity.y < 0f)
@@ -233,7 +259,11 @@ namespace roundbeargames_tutorial
                 //Debug.Log("pull");
                 RIGID_BODY.velocity += -Vector3.up * pullMultiplier;
             }
+
+            UpdateBoxCollider_Size();
+            UpdateBoxCollider_Center();
         }
+
         public void CreateMiddleSpheres(GameObject start, Vector3 dir, float sec,
             int iterations, List<GameObject> spheresList)
         {

@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6d2f756782714bde8623da1d84440f5, type: 3}
-  m_Name: Player_Jump_Normal_GroundDetector
+  m_Script: {fileID: 11500000, guid: 37719455196c942af8d31ac2919e4ad4, type: 3}
+  m_Name: General_Idle_UpdateBoxCollider
   m_EditorClassIdentifier: 
-  checkTime: 0.2
-  distance: 0.5
+  targetSize: {x: 0.29, y: 1.85, z: 0.4}
+  sizeUpdateSpeed: 5000
+  targetCenter: {x: 0, y: 0.91, z: 0}
+  centerUpdateSpeed: 5000
