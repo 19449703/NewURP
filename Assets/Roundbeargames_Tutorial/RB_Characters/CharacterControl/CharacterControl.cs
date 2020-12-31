@@ -90,6 +90,11 @@ namespace roundbeargames_tutorial
             contactPoints = collision.contacts;
         }
 
+        private void OnCollisionExit(Collision collision)
+        {
+            contactPoints = null;
+        }
+
         private void RegisterCharacter()
         {
             if (!CharacterManager.instance.characters.Contains(this))

@@ -9,14 +9,16 @@ namespace roundbeargames_tutorial
     {
         public bool allowEarlyTurn;
         public bool lockDirection;
+        public bool constant;
         public AnimationCurve speedGraph;
         public float speed;
         public float blockDistance;
-        public bool constant;
 
         [Header("Momentum")]
         public bool useMomentum;
+        public float startingMomentum;
         public float maxMomentum;
+        public bool clearMomentumOnExit;
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -35,7 +37,19 @@ namespace roundbeargames_tutorial
             }
 
             control.animationProgress.disallowEarlyTurn = false;
-            control.animationProgress.airMomentum = 0;
+            //control.animationProgress.airMomentum = 0;
+
+            if (startingMomentum > 0.001f)
+            {
+                if (control.IsFaceingForward())
+                {
+                    control.animationProgress.airMomentum = startingMomentum;
+                }
+                else
+                {
+                    control.animationProgress.airMomentum = -startingMomentum;
+                }
+            }
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -68,19 +82,29 @@ namespace roundbeargames_tutorial
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            control.animationProgress.airMomentum = 0;
+            if (clearMomentumOnExit)
+            {
+                control.animationProgress.airMomentum = 0;
+            }
         }
 
         public void UpdateMomentum(CharacterControl control, AnimatorStateInfo stateInfo)
         {
+            if (control.animationProgress.frameUpdated)
+            {
+                return;
+            }
+
+            control.animationProgress.frameUpdated = true;
+
             if (control.moveLeft)
             {
-                control.animationProgress.airMomentum -= speedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime;
+                control.animationProgress.airMomentum -= speedGraph.Evaluate(stateInfo.normalizedTime) * speed * Time.deltaTime;
             }
 
             if (control.moveRight)
             {
-                control.animationProgress.airMomentum += speedGraph.Evaluate(stateInfo.normalizedTime) * Time.deltaTime;
+                control.animationProgress.airMomentum += speedGraph.Evaluate(stateInfo.normalizedTime) * speed * Time.deltaTime;
             }
 
             control.animationProgress.airMomentum = Mathf.Clamp(control.animationProgress.airMomentum, -maxMomentum, maxMomentum);

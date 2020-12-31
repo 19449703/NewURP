@@ -14,7 +14,10 @@ namespace roundbeargames_tutorial
         //public float maxPressTime;
         //private float pressTime;
         public bool disallowEarlyTurn;
+
+        [Header("AirCondition")]
         public float airMomentum;
+        public bool frameUpdated;
 
         [Header("UpdateBoxCollider")]
         public bool updatingBoxCollider;
@@ -50,6 +53,11 @@ namespace roundbeargames_tutorial
             //{
             //    attackTriggered = true;
             //}
+        }
+
+        private void LateUpdate()
+        {
+            frameUpdated = false;
         }
     }
 }

@@ -27,6 +27,8 @@ namespace roundbeargames_tutorial
         {
             GameObject obj = GameObject.Find("Main Camera");
             mainCamera = obj.GetComponent<Camera>();
+
+            //Time.timeScale = 0.3f;
         }
 
         IEnumerator _CamShakee(float sec)

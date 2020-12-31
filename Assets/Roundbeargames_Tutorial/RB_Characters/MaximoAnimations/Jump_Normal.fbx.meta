@@ -74,7 +74,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 76
-      lastFrame: 105
+      lastFrame: 104
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -102,7 +102,7 @@ ModelImporter:
       name: Jump_Normal_Landing
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 106
+      firstFrame: 113
       lastFrame: 193
       wrapMode: 0
       orientationOffsetY: 0

@@ -7,11 +7,14 @@ namespace roundbeargames_tutorial
     [CreateAssetMenu(fileName = "UpdateBoxCollider", menuName = "Roundbeargames/AbilityData/UpdateBoxCollider")]
     public class UpdateBoxCollider : StateData
     {
-        public Vector3 targetSize;
-        public float sizeUpdateSpeed;
-
         public Vector3 targetCenter;
         public float centerUpdateSpeed;
+
+        [Space(10)]
+        public Vector3 targetSize;
+        public float sizeUpdateSpeed;
+        [Space(10)]
+        public bool keepUpdating;
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -26,11 +29,17 @@ namespace roundbeargames_tutorial
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
+            CharacterControl control = characterState.GetCharacterControl(animator);
+
+            if (!keepUpdating)
+            {
+                control.animationProgress.updatingBoxCollider = false;
+            }
         }
     }
 }
