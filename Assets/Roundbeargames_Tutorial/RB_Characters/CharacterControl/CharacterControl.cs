@@ -47,6 +47,7 @@ namespace roundbeargames_tutorial
         [Header("Gravity")]
         public float gravityMultiplier;
         public float pullMultiplier;
+        public ContactPoint[] contactPoints;
 
         [Header("Setup")]
         public PlayableCharacterType playableCharacterType;
@@ -82,6 +83,11 @@ namespace roundbeargames_tutorial
 
             SetColliderSpheres();
             RegisterCharacter();
+        }
+
+        private void OnCollisionStay(Collision collision)
+        {
+            contactPoints = collision.contacts;
         }
 
         private void RegisterCharacter()
@@ -197,10 +203,9 @@ namespace roundbeargames_tutorial
 
         public void Reposition_FrontSpheres()
         {
-            float top = boxCollider.bounds.center.y + boxCollider.bounds.extents.y;
-            float bottom = boxCollider.bounds.center.y - boxCollider.bounds.extents.y;
-            float front = boxCollider.bounds.center.z + boxCollider.bounds.extents.z;
-            //float back = boxCollider.bounds.center.z - boxCollider.bounds.extents.z;
+            float top = boxCollider.bounds.center.y + boxCollider.bounds.size.y * 0.5f;
+            float bottom = boxCollider.bounds.center.y - boxCollider.bounds.size.y * 0.5f;
+            float front = boxCollider.bounds.center.z + boxCollider.bounds.size.z * 0.5f;
 
             frontSpheres[0].transform.localPosition = new Vector3(0, bottom + 0.05f, front) - this.transform.position;
             frontSpheres[1].transform.localPosition = new Vector3(0, top, front) - this.transform.position;
@@ -215,10 +220,9 @@ namespace roundbeargames_tutorial
 
         public void Reposition_BottomSpheres()
         {
-            //float top = boxCollider.bounds.center.y + boxCollider.bounds.extents.y;
-            float bottom = boxCollider.bounds.center.y - boxCollider.bounds.extents.y;
-            float front = boxCollider.bounds.center.z + boxCollider.bounds.extents.z;
-            float back = boxCollider.bounds.center.z - boxCollider.bounds.extents.z;
+            float bottom = boxCollider.bounds.center.y - boxCollider.bounds.size.y * 0.5f;
+            float front = boxCollider.bounds.center.z + boxCollider.bounds.size.z * 0.5f;
+            float back = boxCollider.bounds.center.z - boxCollider.bounds.size.z * 0.5f;
 
             bottomSpheres[0].transform.localPosition = new Vector3(0, bottom, back) - this.transform.position;
             bottomSpheres[1].transform.localPosition = new Vector3(0, bottom, front) - this.transform.position;
