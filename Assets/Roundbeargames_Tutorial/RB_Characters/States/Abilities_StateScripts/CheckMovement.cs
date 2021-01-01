@@ -16,7 +16,7 @@ namespace roundbeargames_tutorial
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
 
-            animator.SetBool(TransitionParameter.Attack.ToString(), control.moveLeft || control.moveRight);
+            animator.SetBool(TransitionParameter.Move.ToString(), control.moveLeft || control.moveRight);
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)

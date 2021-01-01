@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace roundbeargames_tutorial
 {
@@ -43,6 +44,7 @@ namespace roundbeargames_tutorial
         public List<GameObject> frontSpheres = new List<GameObject>();
         public AIController aiController;
         public BoxCollider boxCollider;
+        public NavMeshObstacle navMeshObstacle;
 
         [Header("Gravity")]
         public float gravityMultiplier;
@@ -80,6 +82,7 @@ namespace roundbeargames_tutorial
             damageDetector = GetComponentInChildren<DamageDecetor>();
             aiController = GetComponentInChildren<AIController>();
             boxCollider = GetComponent<BoxCollider>();
+            navMeshObstacle = GetComponent<NavMeshObstacle>();
 
             SetColliderSpheres();
             RegisterCharacter();
@@ -175,11 +178,12 @@ namespace roundbeargames_tutorial
             foreach (Collider c in ragdollParts)
             {
                 c.isTrigger = false;
-                c.attachedRigidbody.velocity = Vector3.zero;
 
                 TriggerDetector det = c.GetComponent<TriggerDetector>();
                 c.transform.localPosition = det.lastPosition;
                 c.transform.localRotation = det.lastRotation;
+
+                c.attachedRigidbody.velocity = Vector3.zero;
             }
         }
 
@@ -272,13 +276,11 @@ namespace roundbeargames_tutorial
         {
             if (RIGID_BODY.velocity.y < 0f)
             {
-                //Debug.Log("gravity");
                 RIGID_BODY.velocity += -Vector3.up * gravityMultiplier;
             }
 
             if (RIGID_BODY.velocity.y > 0f && !jump)
             {
-                //Debug.Log("pull");
                 RIGID_BODY.velocity += -Vector3.up * pullMultiplier;
             }
 
@@ -289,6 +291,12 @@ namespace roundbeargames_tutorial
             {
                 Reposition_BottomSpheres();
                 Reposition_FrontSpheres();
+            }
+
+            if (animationProgress.ragdollTriggered)
+            {
+                TurnOnRagdoll();
+                animationProgress.ragdollTriggered = false;
             }
         }
 

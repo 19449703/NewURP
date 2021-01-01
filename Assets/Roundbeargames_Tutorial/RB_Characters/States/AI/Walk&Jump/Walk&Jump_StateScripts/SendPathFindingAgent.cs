@@ -26,8 +26,10 @@ namespace roundbeargames_tutorial
                 control.aiProgress.pathFindingAgent = p.GetComponent<PathFindingAgent>();
             }
 
+            control.aiProgress.pathFindingAgent.owner = control;
             control.aiProgress.pathFindingAgent.GetComponent<NavMeshAgent>().enabled = false;
             control.aiProgress.pathFindingAgent.transform.position = control.transform.position;
+            control.navMeshObstacle.carving = false;
             control.aiProgress.pathFindingAgent.GoToTarget();
         }
 

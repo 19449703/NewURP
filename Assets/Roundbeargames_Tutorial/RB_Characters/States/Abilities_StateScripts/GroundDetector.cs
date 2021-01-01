@@ -32,9 +32,7 @@ namespace roundbeargames_tutorial
 
         bool IsGrounded(CharacterControl control)
         {
-            if (control.RIGID_BODY.velocity.y > -0.001f
-                && control.RIGID_BODY.velocity.y <= 0f
-                && control.contactPoints != null)
+            if (control.contactPoints != null)
             {
                 float colliderBottom = control.transform.position.y +
                     control.boxCollider.center.y -
@@ -44,7 +42,12 @@ namespace roundbeargames_tutorial
                 {
                     float yDiff = Mathf.Abs(c.point.y - colliderBottom);
                     if (yDiff < 0.01f)
-                        return true;
+                    {
+                        if (Mathf.Abs(control.RIGID_BODY.velocity.y) < 0.001f)
+                        {
+                            return true;
+                        }
+                    } 
                 }
             }
 

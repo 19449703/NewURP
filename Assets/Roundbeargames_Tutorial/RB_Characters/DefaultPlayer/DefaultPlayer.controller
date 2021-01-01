@@ -535,7 +535,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Fail
+  m_Name: Fall
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -1849,7 +1849,7 @@ AnimatorStateMachine:
     m_Position: {x: 570, y: -10, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5312538503075697170}
-    m_Position: {x: -20, y: 110, z: 0}
+    m_Position: {x: -20, y: 100, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6582714791274435421}
     m_Position: {x: 300, y: -20, z: 0}
