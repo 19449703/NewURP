@@ -10,17 +10,23 @@ namespace roundbeargames_tutorial
         [Range(0f, 1f)]
         public float jumpTiming;
         public float jumpForce;
+        [Header("Extra Gravity")]
         public AnimationCurve pull;
+        public bool cancelPull;
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
+            CharacterControl control = characterState.GetCharacterControl(animator);
+            
+            control.animationProgress.jumped = false;
+
             if (jumpTiming == 0f)
             {
-                CharacterControl control = characterState.GetCharacterControl(animator);
-
                 control.RIGID_BODY.AddForce(Vector3.up * jumpForce);
                 control.animationProgress.jumped = true;
             }
+
+            control.animationProgress.cancelPull = cancelPull;
 
             animator.SetBool(TransitionParameter.Grounded.ToString(), false);
         }

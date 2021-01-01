@@ -13,11 +13,15 @@ namespace roundbeargames_tutorial
         //public bool attackTriggered;
         //public float maxPressTime;
         //private float pressTime;
+
+        [Header("GroundMovement")]
         public bool disallowEarlyTurn;
+        public bool lockDirectionNextState;
 
         [Header("AirCondition")]
         public float airMomentum;
         public bool frameUpdated;
+        public bool cancelPull;
 
         [Header("UpdateBoxCollider")]
         public bool updatingBoxCollider;

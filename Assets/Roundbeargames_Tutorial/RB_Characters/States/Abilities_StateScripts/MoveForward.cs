@@ -9,6 +9,7 @@ namespace roundbeargames_tutorial
     {
         public bool allowEarlyTurn;
         public bool lockDirection;
+        public bool lockDirectionNextState;
         public bool constant;
         public AnimationCurve speedGraph;
         public float speed;
@@ -26,18 +27,24 @@ namespace roundbeargames_tutorial
 
             if (allowEarlyTurn && !control.animationProgress.disallowEarlyTurn)
             {
-                if (control.moveLeft)
+                if (!control.animationProgress.lockDirectionNextState)
                 {
-                    control.FaceForward(false);
+                    if (control.moveLeft)
+                    {
+                        control.FaceForward(false);
+                    }
+                    else if (control.moveRight)
+                    {
+                        control.FaceForward(true);
+                    }
                 }
-                else if (control.moveRight)
+                else
                 {
-                    control.FaceForward(true);
+                    control.animationProgress.lockDirectionNextState = false;
                 }
             }
 
             control.animationProgress.disallowEarlyTurn = false;
-            //control.animationProgress.airMomentum = 0;
 
             if (startingMomentum > 0.001f)
             {
@@ -55,6 +62,15 @@ namespace roundbeargames_tutorial
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             CharacterControl control = characterState.GetCharacterControl(animator);
+
+            control.animationProgress.lockDirectionNextState = lockDirectionNextState;
+
+            if (control.animationProgress.frameUpdated)
+            {
+                return;
+            }
+
+            control.animationProgress.frameUpdated = true;
 
             if (control.jump)
             {
@@ -90,13 +106,6 @@ namespace roundbeargames_tutorial
 
         public void UpdateMomentum(CharacterControl control, AnimatorStateInfo stateInfo)
         {
-            if (control.animationProgress.frameUpdated)
-            {
-                return;
-            }
-
-            control.animationProgress.frameUpdated = true;
-
             if (control.moveLeft)
             {
                 control.animationProgress.airMomentum -= speedGraph.Evaluate(stateInfo.normalizedTime) * speed * Time.deltaTime;

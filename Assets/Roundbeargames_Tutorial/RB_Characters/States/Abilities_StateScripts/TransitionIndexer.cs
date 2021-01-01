@@ -13,6 +13,8 @@ namespace roundbeargames_tutorial
         ATTACK,
         JUMP,
         GRABBING_LEDGE,
+
+        LEFT_OR_RIGHT,
     }
 
     [CreateAssetMenu(fileName = "TransitionIndexer", menuName = "Roundbeargames/AbilityData/TransitionIndexer")]
@@ -116,6 +118,15 @@ namespace roundbeargames_tutorial
                             }
                         }
                         break;
+
+                    case TransitionConditionType.LEFT_OR_RIGHT:
+                        {
+                            if (!control.moveLeft && !control.moveRight)
+                            {
+                                return false;
+                            }
+                            break;
+                        }
                 }
             }
 
