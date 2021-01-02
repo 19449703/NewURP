@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     public class Settings : MonoBehaviour
     {
@@ -14,6 +14,7 @@ namespace roundbeargames_tutorial
             Time.timeScale = frameSettings.timeScale;
             Application.targetFrameRate = frameSettings.targetFPS;
             Physics.defaultSolverVelocityIterations = physicsSettings.defaultSolverVelocityIterations;
+            VirtualInputManager.instance.LoadKeys();
         }
     }
 }

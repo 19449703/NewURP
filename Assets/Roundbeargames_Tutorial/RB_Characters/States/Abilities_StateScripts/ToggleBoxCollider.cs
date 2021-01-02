@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "ToggleBoxCollider", menuName = "Roundbeargames/AbilityData/ToggleBoxCollider")]
     public class ToggleBoxCollider : StateData

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "GravityPull", menuName = "Roundbeargames/AbilityData/GravityPull")]
     public class GravityPull : StateData

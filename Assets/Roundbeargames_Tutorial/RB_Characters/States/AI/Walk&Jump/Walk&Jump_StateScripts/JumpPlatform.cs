@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "JumpPlatform", menuName = "Roundbeargames/AI/JumpPlatform")]
     public class JumpPlatform : StateData

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "SpawnObject", menuName = "Roundbeargames/AbilityData/SpawnObject")]
     public class SpawnObject : StateData

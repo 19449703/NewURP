@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "GroundDetector", menuName = "Roundbeargames/AbilityData/GroundDetector")]
     public class GroundDetector : StateData

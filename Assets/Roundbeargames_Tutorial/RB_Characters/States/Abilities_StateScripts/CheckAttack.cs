@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "CheckAttack", menuName = "Roundbeargames/AbilityData/CheckAttack")]
     public class CheckAttack : StateData

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "Idle", menuName = "Roundbeargames/AbilityData/Idle")]
     public class Idle : StateData

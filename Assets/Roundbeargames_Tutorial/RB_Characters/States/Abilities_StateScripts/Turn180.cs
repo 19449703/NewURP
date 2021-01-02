@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "Turn180", menuName = "Roundbeargames/AbilityData/Turn180")]
     public class Turn180 : StateData

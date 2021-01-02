@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "ShakeCamera", menuName = "Roundbeargames/AbilityData/ShakeCamera")]
     public class ShakeCamera : StateData

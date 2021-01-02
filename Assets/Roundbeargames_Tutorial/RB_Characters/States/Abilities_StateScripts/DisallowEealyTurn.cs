@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "DisallowEealyTurn", menuName = "Roundbeargames/AbilityData/DisallowEealyTurn")]
     public class DisallowEealyTurn : StateData

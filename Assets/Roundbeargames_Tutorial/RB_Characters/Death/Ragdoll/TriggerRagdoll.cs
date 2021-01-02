@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "TriggerRagdoll", menuName = "Roundbeargames/Death/TriggerRagdoll")]
     public class TriggerRagdoll : StateData

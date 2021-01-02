@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "OffsetOnLedge", menuName = "Roundbeargames/AbilityData/OffsetOnLedge")]
     public class OffsetOnLedge : StateData

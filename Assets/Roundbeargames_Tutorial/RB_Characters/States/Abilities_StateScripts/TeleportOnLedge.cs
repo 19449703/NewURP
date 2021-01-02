@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "TeleportOnLedge", menuName = "Roundbeargames/AbilityData/TeleportOnLedge")]
     public class TeleportOnLedge : StateData

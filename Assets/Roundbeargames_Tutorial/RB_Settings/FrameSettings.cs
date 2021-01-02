@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "FrameSettings", menuName = "Roundbeargames/Settings/FrameSettings")]
     public class FrameSettings : ScriptableObject

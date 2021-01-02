@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "Jump", menuName = "Roundbeargames/AbilityData/Jump")]
     public class Jump : StateData

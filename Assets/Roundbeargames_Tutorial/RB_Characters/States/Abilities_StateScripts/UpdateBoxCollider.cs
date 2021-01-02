@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace roundbeargames_tutorial
+namespace Roundbeargames
 {
     [CreateAssetMenu(fileName = "UpdateBoxCollider", menuName = "Roundbeargames/AbilityData/UpdateBoxCollider")]
     public class UpdateBoxCollider : StateData
