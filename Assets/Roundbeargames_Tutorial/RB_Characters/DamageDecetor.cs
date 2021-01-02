@@ -88,6 +88,22 @@ namespace roundbeargames_tutorial
                                 return true;
                             }
                         }
+                        else if (part == AttackPartType.LEFT_FOOT)
+                        {
+                            if (collider.gameObject == info.attacker.leftFoot_Attack)
+                            {
+                                damagedPart = trigger.generalBodyPart;
+                                return true;
+                            }
+                        }
+                        else if (part == AttackPartType.RIGHT_FOOT)
+                        {
+                            if (collider.gameObject == info.attacker.rightFoot_Attack)
+                            {
+                                damagedPart = trigger.generalBodyPart;
+                                return true;
+                            }
+                        }
                     }
                 }
             }

@@ -57,6 +57,8 @@ namespace roundbeargames_tutorial
         public List<Collider> ragdollParts = new List<Collider>();
         public GameObject leftHand_Attack;
         public GameObject rightHand_Attack;
+        public GameObject leftFoot_Attack;
+        public GameObject rightFoot_Attack;
 
         private List<TriggerDetector> triggerDetectors = new List<TriggerDetector>();
         private Dictionary<string, GameObject> childObjects = new Dictionary<string, GameObject>();
@@ -314,6 +316,9 @@ namespace roundbeargames_tutorial
             {
                 return;
             }
+
+            // quite and dirty solution
+            if (!skinedMeshAnimator.enabled)
 
             this.transform.rotation = Quaternion.Euler(0, forward ? 0 : 180, 0);
         }

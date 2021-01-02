@@ -487,6 +487,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aa3d20ce11289ab4e8e2b830ddf35660, type: 2}
   - {fileID: 11400000, guid: 9efcda86f75e7bf46aa6e1431def3c62, type: 2}
   - {fileID: 11400000, guid: 73c536f5a42788d47a11eaafb672c811, type: 2}
+  - {fileID: 11400000, guid: 3ea353343d6ec6646936ea6fd57fb29b, type: 2}
 --- !u!114 &-5816481550110244839
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1432,7 +1433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listAbilityData:
   - {fileID: 11400000, guid: c9e2188c0ff464597b32d671e8a519f0, type: 2}
-  - {fileID: 11400000, guid: 0563011ebd12b46b8bbaf9c96b605ed3, type: 2}
+  - {fileID: 11400000, guid: 04d733a69a7a3417eb70f8df2c743936, type: 2}
   - {fileID: 11400000, guid: b10a5797d97dd14449f6889a09848528, type: 2}
   - {fileID: 11400000, guid: 8b22b63b7e7054583bdabb1fe796ab05, type: 2}
 --- !u!114 &746899195235179244
