@@ -14,9 +14,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: 0.12063867
-  m_TransitionOffset: 0.0007298492
-  m_ExitTime: 0.9181811
+  m_TransitionDuration: 0.19824344
+  m_TransitionOffset: 0
+  m_ExitTime: 0.8664517
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -984,8 +984,8 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CorssPuch
-  m_Speed: 2.3
+  m_Name: MMA Kick
+  m_Speed: 1.45
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8928786109981599233}
@@ -999,7 +999,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 9e09139258ad4f044b0379baa29462ee,
+  m_Motion: {fileID: -203655887218126122, guid: e72f32c156c25714bad9e135fd4e9658,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
