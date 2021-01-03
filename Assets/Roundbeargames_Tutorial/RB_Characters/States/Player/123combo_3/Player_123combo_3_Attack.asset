@@ -10,14 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93bf091f0b56048b69abd4bd771535a8, type: 3}
-  m_Name: Player_LeadJab_Attack
+  m_Name: Player_123combo_3_Attack
   m_EditorClassIdentifier: 
   debug: 0
-  startAttackTime: 0.15
-  endAttackTime: 0.52
+  startAttackTime: 0.1
+  endAttackTime: 0.55
   attackParts: 00000000
   deathType: 0
   mustCollider: 1
   mustFaceAttacker: 0
   lethalRange: 0
   maxHits: 1
+  comboStartTime: 0.2
+  comboEndTime: 0.8

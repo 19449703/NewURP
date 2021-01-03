@@ -25,6 +25,10 @@ namespace Roundbeargames
         public float lethalRange;
         public int maxHits;
 
+        [Header("Combo")]
+        public float comboStartTime;
+        public float comboEndTime;
+
         private List<AttackInfo> finishedAttacks = new List<AttackInfo>();
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -97,9 +101,9 @@ namespace Roundbeargames
 
         public void CheckCombo(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (stateInfo.normalizedTime >= startAttackTime + (endAttackTime - startAttackTime) / 3)
+            if (stateInfo.normalizedTime >= comboStartTime)
             {
-                if (stateInfo.normalizedTime < endAttackTime + (endAttackTime - startAttackTime) / 2)
+                if (stateInfo.normalizedTime < comboEndTime)
                 {
                     if (characterState.characterControl.attack)
                     {
