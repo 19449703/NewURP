@@ -25,7 +25,7 @@ namespace Roundbeargames
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             if (MakeTransition(control))
             {
                 animator.SetInteger(TransitionParameter.TransitionIndex.ToString(), index);
@@ -34,14 +34,12 @@ namespace Roundbeargames
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
-            if (MakeTransition(control))
+            if (animator.GetInteger(TransitionParameter.TransitionIndex.ToString()) == 0)
             {
-                animator.SetInteger(TransitionParameter.TransitionIndex.ToString(), index);
-            }
-            else
-            {
-                animator.SetInteger(TransitionParameter.TransitionIndex.ToString(), 0);
+                if (MakeTransition(characterState.characterControl))
+                {
+                    animator.SetInteger(TransitionParameter.TransitionIndex.ToString(), index);
+                }
             }
         }
 

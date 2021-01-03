@@ -16,7 +16,7 @@ namespace Roundbeargames
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
 
             if (control.turbo)
             {

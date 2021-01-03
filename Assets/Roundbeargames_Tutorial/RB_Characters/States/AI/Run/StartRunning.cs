@@ -10,7 +10,7 @@ namespace Roundbeargames
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
 
             Vector3 dir = control.aiProgress.pathFindingAgent.startSphere.transform.position - control.transform.position;
             control.FaceForward(dir.z > 0);
@@ -26,7 +26,7 @@ namespace Roundbeargames
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             Vector3 dist = control.aiProgress.pathFindingAgent.startSphere.transform.position - control.transform.position;
 
             if (Vector3.SqrMagnitude(dist) < 2f)

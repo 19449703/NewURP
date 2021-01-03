@@ -15,13 +15,13 @@ namespace Roundbeargames
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             control.gravityMultiplier = gravity.Evaluate(stateInfo.normalizedTime);
         }
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             control.gravityMultiplier = 0;
         }
     }

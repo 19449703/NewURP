@@ -10,7 +10,7 @@ namespace Roundbeargames
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             control.skinedMeshAnimator.applyRootMotion = true;
         }
 
@@ -21,8 +21,7 @@ namespace Roundbeargames
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
-            control.skinedMeshAnimator.applyRootMotion = false;
+            characterState.characterControl.skinedMeshAnimator.applyRootMotion = false;
         }
     }
 }

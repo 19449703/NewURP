@@ -14,6 +14,7 @@ namespace Roundbeargames
         public AnimationCurve speedGraph;
         public float speed;
         public float blockDistance;
+        public bool ignoreCharacterBox;
 
         [Header("Momentum")]
         public bool useMomentum;
@@ -23,7 +24,7 @@ namespace Roundbeargames
 
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
 
             if (allowEarlyTurn && !control.animationProgress.disallowEarlyTurn)
             {
@@ -61,7 +62,7 @@ namespace Roundbeargames
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
 
             control.animationProgress.lockDirectionNextState = lockDirectionNextState;
 
@@ -96,7 +97,7 @@ namespace Roundbeargames
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
 
             if (clearMomentumOnExit)
             {
@@ -185,6 +186,21 @@ namespace Roundbeargames
                 }
             }
         }
+
+        bool IgnoringCharacterBox(Collider col)
+        {
+            if (!ignoreCharacterBox)
+            {
+                return false;
+            }
+
+            if (col.gameObject.GetComponent<CharacterControl>() != null)
+            {
+                return true;
+            }
+
+            return false;
+        }
             
         bool CheckFront(CharacterControl control)
         {
@@ -199,6 +215,7 @@ namespace Roundbeargames
                         if (!IsBodyPart(hit.collider)
                             && !Ledge.IsLedge(hit.collider.gameObject)
                             && !Ledge.IsLedgeChecker(hit.collider.gameObject)
+                            && !IgnoringCharacterBox(hit.collider)
                             )
                         {
                             return true;

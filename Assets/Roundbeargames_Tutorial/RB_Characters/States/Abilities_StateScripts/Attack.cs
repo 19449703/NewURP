@@ -34,7 +34,7 @@ namespace Roundbeargames
             GameObject obj = PoolManager.instance.GetObject(PoolObjectType.ATTACKINFO);
             AttackInfo info = obj.GetComponent<AttackInfo>();
             obj.SetActive(true);
-            info.ResetInfo(this, characterState.GetCharacterControl(animator));
+            info.ResetInfo(this, characterState.characterControl);
 
             if (!AttackManager.instance.currentAttcks.Contains(info))
             {
@@ -101,8 +101,7 @@ namespace Roundbeargames
             {
                 if (stateInfo.normalizedTime < endAttackTime + (endAttackTime - startAttackTime) / 2)
                 {
-                    CharacterControl control = characterState.GetCharacterControl(animator);
-                    if (control.attack)
+                    if (characterState.characterControl.attack)
                     {
                         Debug.Log("uppercut triggered");
                         animator.SetBool(TransitionParameter.Attack.ToString(), true);

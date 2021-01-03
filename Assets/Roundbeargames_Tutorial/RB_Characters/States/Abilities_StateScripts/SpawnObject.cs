@@ -17,7 +17,7 @@ namespace Roundbeargames
         {
             if (spawnTiming == 0f)
             {
-                CharacterControl control = characterState.GetCharacterControl(animator);
+                CharacterControl control = characterState.characterControl;
                 SpawnObj(control);
 
             }
@@ -25,7 +25,7 @@ namespace Roundbeargames
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
 
             if (!control.animationProgress.poolObjectList.Contains(objectType))
             {
@@ -38,7 +38,7 @@ namespace Roundbeargames
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             if (control.animationProgress.poolObjectList.Contains(objectType))
             {
                 control.animationProgress.poolObjectList.Remove(objectType);

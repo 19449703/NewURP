@@ -88,6 +88,17 @@ namespace Roundbeargames
 
             SetColliderSpheres();
             RegisterCharacter();
+            //CacheCharacterControl(skinedMeshAnimator);
+        }
+
+        public void CacheCharacterControl(Animator animator)
+        {
+            CharacterState[] arr = animator.GetBehaviours<CharacterState>();
+
+            foreach(var state in arr)
+            {
+                state.characterControl = this;
+            }
         }
 
         private void OnCollisionStay(Collision collision)
@@ -319,6 +330,7 @@ namespace Roundbeargames
 
             // quite and dirty solution
             if (!skinedMeshAnimator.enabled)
+                return;
 
             this.transform.rotation = Quaternion.Euler(0, forward ? 0 : 180, 0);
         }

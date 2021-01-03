@@ -18,13 +18,11 @@ namespace Roundbeargames
         {
             if (stateInfo.normalizedTime > triggerTiming)
             {
-                CharacterControl control = characterState.GetCharacterControl(animator);
-                if (!control.animationProgress.ragdollTriggered)
+                if (!characterState.characterControl.animationProgress.ragdollTriggered)
                 {
-                    //control.TurnOnRagdoll();
-                    if (control.skinedMeshAnimator.enabled)
+                    if (characterState.characterControl.skinedMeshAnimator.enabled)
                     {
-                        control.animationProgress.ragdollTriggered = true;
+                        characterState.characterControl.animationProgress.ragdollTriggered = true;
                     }
                 }
             }

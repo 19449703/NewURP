@@ -9,7 +9,7 @@ namespace Roundbeargames
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             GameObject anim = control.skinedMeshAnimator.gameObject;
             anim.transform.SetParent(control.ledgeChecker.grabbedLedge.transform);
             anim.transform.localPosition = control.ledgeChecker.grabbedLedge.offset;

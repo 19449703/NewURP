@@ -13,13 +13,13 @@ namespace Roundbeargames
             animator.SetBool(TransitionParameter.Attack.ToString(), false);
             animator.SetBool(TransitionParameter.Move.ToString(), false);
 
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             control.animationProgress.disallowEarlyTurn = false;
         }
 
 		public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-			CharacterControl control = characterState.GetCharacterControl(animator);
+			CharacterControl control = characterState.characterControl;
 
             if (control.attack)
             {

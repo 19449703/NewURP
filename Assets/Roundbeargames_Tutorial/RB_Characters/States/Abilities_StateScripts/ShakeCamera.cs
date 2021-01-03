@@ -14,7 +14,7 @@ namespace Roundbeargames
         {
             if (shakeTiming == 0f)
             {
-                CharacterControl control = characterState.GetCharacterControl(animator);
+                CharacterControl control = characterState.characterControl;
                 CameraManager.instance.ShakeCamera(0.2f);
                 control.animationProgress.cameraShaken = true;
             }
@@ -22,7 +22,7 @@ namespace Roundbeargames
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             if (!control.animationProgress.cameraShaken)
             {
                 if (stateInfo.normalizedTime >= shakeTiming)
@@ -35,7 +35,7 @@ namespace Roundbeargames
 
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.GetCharacterControl(animator);
+            CharacterControl control = characterState.characterControl;
             control.animationProgress.cameraShaken = false;
         }
     }
