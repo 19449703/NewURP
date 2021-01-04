@@ -28,6 +28,11 @@ namespace Roundbeargames
 			foreach (var d in listAbilityData)
 			{
 				d.OnEnter(this, animator, stateInfo);
+
+                if (!characterControl.animationProgress.currentRunningAbilities.Contains(d))
+                {
+                    characterControl.animationProgress.currentRunningAbilities.Add(d);
+                }
 			}
 		}
 
@@ -41,7 +46,12 @@ namespace Roundbeargames
 			foreach (var d in listAbilityData)
 			{
 				d.OnExit(this, animator, stateInfo);
-			}
+
+                if (characterControl.animationProgress.currentRunningAbilities.Contains(d))
+                {
+                    characterControl.animationProgress.currentRunningAbilities.Remove(d);
+                }
+            }
 		}
     }
 }

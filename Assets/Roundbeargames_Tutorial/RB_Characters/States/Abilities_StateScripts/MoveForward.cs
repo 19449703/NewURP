@@ -66,12 +66,10 @@ namespace Roundbeargames
 
             control.animationProgress.lockDirectionNextState = lockDirectionNextState;
 
-            if (control.animationProgress.frameUpdated)
+            if (control.animationProgress.IsRunning(typeof(MoveForward), this))
             {
                 return;
             }
-
-            control.animationProgress.frameUpdated = true;
 
             if (control.jump)
             {

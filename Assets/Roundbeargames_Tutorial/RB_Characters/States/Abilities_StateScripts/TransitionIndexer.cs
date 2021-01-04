@@ -15,6 +15,9 @@ namespace Roundbeargames
         GRABBING_LEDGE,
 
         LEFT_OR_RIGHT,
+
+        GROUNDED,
+        MOVE_FORWARD,
     }
 
     [CreateAssetMenu(fileName = "TransitionIndexer", menuName = "Roundbeargames/AbilityData/TransitionIndexer")]
@@ -122,6 +125,34 @@ namespace Roundbeargames
                             if (!control.moveLeft && !control.moveRight)
                             {
                                 return false;
+                            }
+                            break;
+                        }
+
+                    case TransitionConditionType.GROUNDED:
+                        {
+                            if (!control.skinedMeshAnimator.GetBool(TransitionParameter.Grounded.ToString()))
+                            {
+                                return false;
+                            }
+                            break;
+                        }
+
+                    case TransitionConditionType.MOVE_FORWARD:
+                        {
+                            if (control.IsFaceingForward())
+                            {
+                                if (!control.moveRight)
+                                {
+                                    return false;
+                                }
+                            }
+                            else
+                            {
+                                if (!control.moveLeft)
+                                {
+                                    return false;
+                                }
                             }
                             break;
                         }

@@ -35,7 +35,10 @@ namespace Roundbeargames
             }
             else
             {
-                control.animationProgress.jumped = false;
+                if (!control.animationProgress.IsRunning(typeof(Jump), this))
+                {
+                    control.animationProgress.jumped = false;
+                }
             }
 
             if (control.moveLeft && control.moveRight)
