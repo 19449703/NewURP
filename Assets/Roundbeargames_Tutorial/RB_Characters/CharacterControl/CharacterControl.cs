@@ -47,8 +47,6 @@ namespace Roundbeargames
         public NavMeshObstacle navMeshObstacle;
 
         [Header("Gravity")]
-        public float gravityMultiplier;
-        public float pullMultiplier;
         public ContactPoint[] contactPoints;
 
         [Header("Setup")]
@@ -289,14 +287,9 @@ namespace Roundbeargames
         {
             if (!animationProgress.cancelPull)
             {
-                if (RIGID_BODY.velocity.y < 0f)
-                {
-                    RIGID_BODY.velocity += -Vector3.up * gravityMultiplier;
-                }
-
                 if (RIGID_BODY.velocity.y > 0f && !jump)
                 {
-                    RIGID_BODY.velocity += -Vector3.up * pullMultiplier;
+                    RIGID_BODY.velocity -= Vector3.up * RIGID_BODY.velocity.y * 0.1f;
                 }
             }
 

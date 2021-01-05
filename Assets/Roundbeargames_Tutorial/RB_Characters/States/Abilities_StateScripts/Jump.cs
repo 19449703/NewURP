@@ -35,7 +35,7 @@ namespace Roundbeargames
         {
             CharacterControl control = characterState.characterControl;
 
-            control.pullMultiplier = pull.Evaluate(stateInfo.normalizedTime);
+            //control.pullMultiplier = pull.Evaluate(stateInfo.normalizedTime);
 
             if (!control.animationProgress.jumped && stateInfo.normalizedTime >= jumpTiming)
             {
@@ -47,7 +47,7 @@ namespace Roundbeargames
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             CharacterControl control = characterState.characterControl;
-            control.pullMultiplier = 0;
+            //control.pullMultiplier = 0;
             //control.animationProgress.jumped = false;
         }
     }
