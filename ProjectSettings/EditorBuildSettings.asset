@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Roundbeargames_Tutorial/RB_Scenes/Night/TutorialScene_CharacterSelect.unity
     guid: 5f66ebeedb9ad4490a46e07d62fd048c
   - enabled: 1
-    path: Assets/Roundbeargames_Tutorial/RB_Scenes/Night/TutorialScene_Sample.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/Roundbeargames_Tutorial/RB_Scenes/TutorialScene_Sample_MainMenu.unity
+    guid: 438f3d015796443018984c8671577888
+  - enabled: 1
+    path: Assets/Roundbeargames_Tutorial/RB_Scenes/Day/TutorialScene_Sample_Day.unity
+    guid: 4da0dd23a411ba2429ee13d969aa860f
   m_configObjects: {}
