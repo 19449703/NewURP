@@ -16,6 +16,9 @@ namespace Roundbeargames
         public float blockDistance;
         public bool ignoreCharacterBox;
 
+        private List<GameObject> sphereList;
+        private float dirBlock;
+
         [Header("Momentum")]
         public bool useMomentum;
         public float startingMomentum;
@@ -126,13 +129,13 @@ namespace Roundbeargames
                 control.FaceForward(false);
             }
 
-            if (!CheckFront(control))
+            if (!IsBlock(control, speed))
                 control.MoveForward(speed, Mathf.Abs(control.animationProgress.airMomentum));
         }
 
         private void ConstentMove(CharacterControl control, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (!CheckFront(control))
+            if (!IsBlock(control, speed))
             {
                 control.MoveForward(speed, speedGraph.Evaluate(stateInfo.normalizedTime));
             }
@@ -156,14 +159,14 @@ namespace Roundbeargames
 
             if (control.moveLeft)
             {
-                if (!CheckFront(control))
+                if (!IsBlock(control, speed))
                 {
                     control.MoveForward(speed, speedGraph.Evaluate(stateInfo.normalizedTime));
                 }
             }
             if (control.moveRight)
             {
-                if (!CheckFront(control))
+                if (!IsBlock(control, speed))
                 {
                     control.MoveForward(speed, speedGraph.Evaluate(stateInfo.normalizedTime));
                 }
@@ -199,14 +202,25 @@ namespace Roundbeargames
 
             return false;
         }
-            
-        bool CheckFront(CharacterControl control)
+
+        bool IsBlock(CharacterControl control, float speed)
         {
-            foreach (var o in control.frontSpheres)
+            if (speed > 0)
             {
-                Debug.DrawRay(o.transform.position, control.transform.forward * 0.3f, Color.yellow);
+                sphereList = control.collisionSpheres.frontSpheres;
+                dirBlock = 0.3f;
+            }
+            else
+            {
+                sphereList = control.collisionSpheres.backSpheres;
+                dirBlock = -0.3f;
+            }
+
+            foreach (var o in sphereList)
+            {
+                Debug.DrawRay(o.transform.position, control.transform.forward * dirBlock, Color.yellow);
                 RaycastHit hit;
-                if (Physics.Raycast(o.transform.position, control.transform.forward, out hit, blockDistance))
+                if (Physics.Raycast(o.transform.position, control.transform.forward * dirBlock, out hit, blockDistance))
                 {
                     if (!control.ragdollParts.Contains(hit.collider))
                     {
@@ -216,11 +230,14 @@ namespace Roundbeargames
                             && !IgnoringCharacterBox(hit.collider)
                             )
                         {
+                            control.animationProgress.blockingObj = hit.collider.transform.root.gameObject;
                             return true;
                         }
                     }
                 }
             }
+
+            control.animationProgress.blockingObj = null;
 
             return false;
         }

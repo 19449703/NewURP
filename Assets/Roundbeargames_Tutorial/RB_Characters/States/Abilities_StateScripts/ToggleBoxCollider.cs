@@ -43,8 +43,9 @@ namespace Roundbeargames
 
             if (repositionSpheres)
             {
-                control.Reposition_FrontSpheres();
-                control.Reposition_BottomSpheres();
+                control.collisionSpheres.Reposition_FrontSpheres();
+                control.collisionSpheres.Reposition_BottomSpheres();
+                control.collisionSpheres.Reposition_BackSpheres();
             }
         }
     }

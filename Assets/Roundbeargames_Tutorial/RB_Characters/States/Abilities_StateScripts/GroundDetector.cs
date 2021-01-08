@@ -45,6 +45,7 @@ namespace Roundbeargames
                     {
                         if (Mathf.Abs(control.RIGID_BODY.velocity.y) < 0.001f)
                         {
+                            control.animationProgress.ground = c.otherCollider.gameObject;
                             return true;
                         }
                     } 
@@ -53,7 +54,7 @@ namespace Roundbeargames
 
             if (control.RIGID_BODY.velocity.y < 0f)
             {
-                foreach (var o in control.bottomSpheres)
+                foreach (var o in control.collisionSpheres.bottomSpheres)
                 {
                     Debug.DrawRay(o.transform.position, -Vector3.up * 0.7f, Color.yellow);
                     RaycastHit hit;
@@ -65,12 +66,15 @@ namespace Roundbeargames
                             && !Ledge.IsCharacter(hit.collider.gameObject)
                             )
                         {
+                            control.animationProgress.ground = hit.collider.transform.root.gameObject;
                             return true;
                         }
                     }
                 }
             }
-            
+
+            control.animationProgress.ground = null;
+
             return false;
         }
     }

@@ -15,6 +15,7 @@ namespace Roundbeargames
 
             CharacterControl control = characterState.characterControl;
             control.animationProgress.disallowEarlyTurn = false;
+            control.animationProgress.blockingObj = null;
         }
 
 		public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
