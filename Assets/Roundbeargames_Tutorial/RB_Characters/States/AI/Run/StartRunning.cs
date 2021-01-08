@@ -17,8 +17,7 @@ namespace Roundbeargames
             control.moveLeft = dir.z < 0;
             control.moveRight = dir.z > 0;
 
-            Vector3 dist = control.aiProgress.pathFindingAgent.startSphere.transform.position - control.transform.position;
-            if (Vector3.SqrMagnitude(dist) > 2f)
+            if (control.aiProgress.GetDistanceToDestination() > 2f)
             {
                 control.turbo = true;
             }
@@ -27,9 +26,8 @@ namespace Roundbeargames
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             CharacterControl control = characterState.characterControl;
-            Vector3 dist = control.aiProgress.pathFindingAgent.startSphere.transform.position - control.transform.position;
 
-            if (Vector3.SqrMagnitude(dist) < 2f)
+            if (control.aiProgress.GetDistanceToDestination() < 2f)
             {
                 control.moveLeft = false;
                 control.moveRight = false;

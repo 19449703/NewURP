@@ -26,7 +26,7 @@ namespace Roundbeargames
             if (control.aiProgress.pathFindingAgent.startSphere.transform.position.y <
                     control.aiProgress.pathFindingAgent.endSphere.transform.position.y)
             {
-                if (Vector3.SqrMagnitude(dir) < 0.01f)
+                if (control.aiProgress.GetDistanceToDestination() < 0.01f)
                 {
                     control.moveLeft = false;
                     control.moveRight = false;
@@ -46,7 +46,7 @@ namespace Roundbeargames
             if (control.aiProgress.pathFindingAgent.startSphere.transform.position.y ==
                     control.aiProgress.pathFindingAgent.endSphere.transform.position.y)
             {
-                if (Vector3.SqrMagnitude(dir) < 0.5f)
+                if (control.aiProgress.GetDistanceToDestination() < 0.5f)
                 {
                     control.moveLeft = false;
                     control.moveRight = false;
@@ -57,29 +57,6 @@ namespace Roundbeargames
                         animator.gameObject.SetActive(false);
                         animator.gameObject.SetActive(true);
                     }
-                    // 临时攻击方案
-                    //else
-                    //{
-                    //    if (CharacterManager.instance.GetPlayableCharacter().damageDetector.damageTaken == 0)
-                    //    {
-                    //        if (control.IsFaceingForward())
-                    //        {
-                    //            control.moveLeft = false;
-                    //            control.moveRight = true;
-                    //            control.attack = true;
-                    //        }
-                    //        else
-                    //        {
-                    //            control.moveLeft = true;
-                    //            control.moveRight = false;
-                    //            control.attack = true;
-                    //        }
-                    //    }
-                    //    else
-                    //    {
-                    //        control.attack = false;
-                    //    }
-                    //}
                 }
             }
         }

@@ -10,8 +10,9 @@ namespace Roundbeargames
         public bool targetPlayableCharacter;
         public GameObject target;
         NavMeshAgent navMeshAgent;
+        Coroutine moveCoroutine;
 
-        List<Coroutine> moveCoroutines = new List<Coroutine>();
+        //List<Coroutine> moveCoroutines = new List<Coroutine>();
 
         public GameObject startSphere;
         public GameObject endSphere;
@@ -40,17 +41,15 @@ namespace Roundbeargames
 
             navMeshAgent.SetDestination(target.transform.position);
 
-            if (moveCoroutines.Count != 0)
+            moveCoroutine = StartCoroutine(_Move());
+        }
+
+        public void OnEnable()
+        {
+            if (moveCoroutine != null)
             {
-                if (moveCoroutines[0] != null)
-                {
-                    StopCoroutine(moveCoroutines[0]);
-                }
-
-                moveCoroutines.RemoveAt(0);
+                StopCoroutine(moveCoroutine);
             }
-
-            moveCoroutines.Add(StartCoroutine(_Move()));
         }
 
         IEnumerator _Move()
@@ -59,8 +58,6 @@ namespace Roundbeargames
             {
                 if (navMeshAgent.isOnOffMeshLink)
                 {
-                    owner.navMeshObstacle.carving = true;
-
                     startSphere.transform.position = navMeshAgent.currentOffMeshLinkData.startPos;
                     endSphere.transform.position = navMeshAgent.currentOffMeshLinkData.endPos;
 
@@ -68,27 +65,26 @@ namespace Roundbeargames
                     
                     navMeshAgent.isStopped = true;
                     startWalk = true;
-                    yield break;
+                    break;
                 }
 
                 Vector3 dist = transform.position - navMeshAgent.destination;
                 if (Vector3.SqrMagnitude(dist) < 0.5f)
                 {
-                    if (Vector3.SqrMagnitude(owner.transform.position - navMeshAgent.destination) > 1f)
-                    {
-                        owner.navMeshObstacle.carving = true;
-                    }
-
                     startSphere.transform.position = navMeshAgent.destination;
                     endSphere.transform.position = navMeshAgent.destination;
 
                     navMeshAgent.isStopped = true;
                     startWalk = true;
-                    yield break;
+                    break;
                 }
 
                 yield return new WaitForEndOfFrame();
             }
+
+            yield return new WaitForSeconds(0.5f);
+
+            owner.navMeshObstacle.carving = true;
         }
     }
 }
