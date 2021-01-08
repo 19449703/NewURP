@@ -26,8 +26,8 @@ namespace Roundbeargames
                 EditorGUI.DropShadowLabel(selectionRect, obj.name.Replace("-", "").ToString());
             }
 
-            HighlightObj(obj, "LedgeChecker", selectionRect);
-            HighlightObj(obj, "DamageDetector", selectionRect);
+            //HighlightObj(obj, "LedgeChecker", selectionRect);
+            //HighlightObj(obj, "DamageDetector", selectionRect);
         }
 
         static void HighlightObj(GameObject obj, string objname, Rect selectionRect)
