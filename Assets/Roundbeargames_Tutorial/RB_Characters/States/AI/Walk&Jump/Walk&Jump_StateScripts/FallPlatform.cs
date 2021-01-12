@@ -40,8 +40,9 @@ namespace Roundbeargames
                     control.moveRight = false;
                     control.moveLeft = false;
 
-                    animator.gameObject.SetActive(false);
-                    animator.gameObject.SetActive(true);
+                    //animator.gameObject.SetActive(false);
+                    //animator.gameObject.SetActive(true);
+                    control.aiController.InitializeAI();
                 }
             }
             else
@@ -57,8 +58,9 @@ namespace Roundbeargames
                     control.moveRight = false;
                     control.moveLeft = false;
 
-                    animator.gameObject.SetActive(false);
-                    animator.gameObject.SetActive(true);
+                    //animator.gameObject.SetActive(false);
+                    //animator.gameObject.SetActive(true);
+                    control.aiController.InitializeAI();
                 }
             }
         }

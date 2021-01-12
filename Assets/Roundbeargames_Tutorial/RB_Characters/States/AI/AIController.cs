@@ -14,22 +14,41 @@ namespace Roundbeargames
     {
         public List<AISubset> aiList = new List<AISubset>();
         public AI_Type initialAI;
+        Coroutine aiRoutine;
 
-        void Awake()
+        void Start()
         {
-            AISubset[] arr = gameObject.GetComponentsInChildren<AISubset>();
+            InitializeAI();
+        }
 
-            foreach(var s in arr)
+        public void InitializeAI()
+        {
+            if (aiList.Count == 0)
             {
-                if (!aiList.Contains(s))
+                AISubset[] arr = gameObject.GetComponentsInChildren<AISubset>();
+
+                foreach (var s in arr)
                 {
-                    aiList.Add(s);
-                    s.gameObject.SetActive(false);
+                    if (!aiList.Contains(s))
+                    {
+                        aiList.Add(s);
+                        s.gameObject.SetActive(false);
+                    }
                 }
+            }
+
+            aiRoutine = StartCoroutine(_InitAI());
+        }
+
+        private void OnEnable()
+        {
+            if (aiRoutine != null)
+            {
+                StopCoroutine(aiRoutine);
             }
         }
 
-        private IEnumerator Start()
+        private IEnumerator _InitAI()
         {
             yield return new WaitForEndOfFrame();
 

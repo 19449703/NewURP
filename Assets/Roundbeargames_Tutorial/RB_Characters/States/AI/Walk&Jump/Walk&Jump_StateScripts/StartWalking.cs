@@ -8,13 +8,18 @@ namespace Roundbeargames
     [CreateAssetMenu(fileName = "StartWalking", menuName = "Roundbeargames/AI/StartWalking")]
     public class StartWalking : StateData
     {
+        public Vector3 targetDir = new Vector3();
+
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            CharacterControl control = characterState.characterControl;
+            WalkStraightTowardsTarget(characterState.characterControl);
+        }
 
-            Vector3 dir = control.aiProgress.pathFindingAgent.startSphere.transform.position - control.transform.position;
-            control.moveLeft = dir.z < 0;
-            control.moveRight = dir.z > 0;
+        public void WalkStraightTowardsTarget(CharacterControl control)
+        {
+            targetDir = control.aiProgress.pathFindingAgent.startSphere.transform.position - control.transform.position;
+            control.moveLeft = targetDir.z < 0;
+            control.moveRight = targetDir.z > 0;
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -40,24 +45,6 @@ namespace Roundbeargames
                     control.aiProgress.pathFindingAgent.endSphere.transform.position.y)
             {
                 animator.SetBool(AI_Walk_Transitions.fall_platform.ToString(), true);
-            }
-
-            // straight
-            if (control.aiProgress.pathFindingAgent.startSphere.transform.position.y ==
-                    control.aiProgress.pathFindingAgent.endSphere.transform.position.y)
-            {
-                if (control.aiProgress.GetDistanceToDestination() < 0.5f)
-                {
-                    control.moveLeft = false;
-                    control.moveRight = false;
-
-                    Vector3 playerDist = control.transform.position - CharacterManager.instance.GetPlayableCharacter().transform.position;
-                    if (playerDist.sqrMagnitude > 1)
-                    {
-                        animator.gameObject.SetActive(false);
-                        animator.gameObject.SetActive(true);
-                    }
-                }
             }
         }
 

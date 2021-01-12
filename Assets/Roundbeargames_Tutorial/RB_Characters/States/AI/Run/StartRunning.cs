@@ -21,6 +21,8 @@ namespace Roundbeargames
             {
                 control.turbo = true;
             }
+
+            control.moveUp = false;
         }
 
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)

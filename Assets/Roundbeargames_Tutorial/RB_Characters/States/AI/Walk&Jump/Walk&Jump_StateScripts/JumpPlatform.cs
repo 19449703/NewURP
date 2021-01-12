@@ -47,8 +47,9 @@ namespace Roundbeargames
                 control.moveUp = true;
                 control.jump = false;
 
-                animator.gameObject.SetActive(false);
-                animator.gameObject.SetActive(true);
+                //animator.gameObject.SetActive(false);
+                //animator.gameObject.SetActive(true);
+                control.aiController.InitializeAI();
             }
         }
 
